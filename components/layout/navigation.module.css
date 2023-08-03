@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0a0c19;
+  background-color: #edf0eb;
+  width: 90%;
+  height: 8vh;
+  margin: 0.5rem auto;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 3rem 4rem;
+}
+
+.link {
+  text-decoration: none;
+  color: #0a0c19;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.logo {
+  font-family: "Permanent Marker", cursive;
+  margin-left: 2rem;
+  transform: scale(170%);
+  display: flex;
+  align-items: center;
+}
+
+.midNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5rem;
+}
+
+.endNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+}
+
+.signup {
+  font-weight: 500;
+}
+
+.signupBtn {
+  border: solid 1.5px #0a0c19;
+  background-color: #eeca3a;
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  transition: all 0.3s;
+}
+
+.signupBtn:hover {
+  transform: translate(-0.2rem, -0.2rem);
+  box-shadow: 0.3rem 0.3rem #0a0c19;
+}
+
+.active {
+  color: #eeca3a;
+}
+
+.hr {
+  height: 4vh;
+  width: 0.5px;
+  background-color: #0a0c19;
+}
+
+@keyframes up-right {
+  0% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  55% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.dot {
+  border-radius: 1000%;
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.yel {
+  background-color: #eeca3a;
+  position: absolute;
+  animation: up-right 5s infinite;
+  transform: translate(0.35rem, 1.2rem);
+}
+
+.smalldot {
+  border-radius: 1000%;
+  width: 7rem;
+  height: 7rem;
+  background-color: #eeca3a;
+  position: absolute;
+  left: 10rem;
+  top: 0.2rem;
+}

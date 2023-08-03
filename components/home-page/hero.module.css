@@ -1,0 +1,101 @@
+.hero {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  color: #0a0c19;
+  position: relative;
+}
+
+.upper {
+  position: relative;
+  width: 40vw;
+  margin: auto;
+  font-size: 2rem;
+  margin-top: 15rem;
+}
+.header {
+  font-size: 5rem;
+}
+
+.motto {
+  text-align: center;
+}
+
+.image01 {
+  position: absolute;
+  top: 4rem;
+  left: 30rem;
+}
+
+.image02 {
+  position: absolute;
+  top: 30rem;
+  left: 110rem;
+}
+
+.bigdot {
+  border-radius: 1000%;
+  width: 15rem;
+  height: 15rem;
+  background-color: #0a0c19;
+  position: absolute;
+  top: -12rem;
+  left: 80rem;
+  opacity: 0.05;
+}
+
+.normaldot {
+  border-radius: 1000%;
+  width: 20rem;
+  height: 20rem;
+  background-color: #eeca3a;
+  position: absolute;
+  top: 60rem;
+  left: 130rem;
+  opacity: 0.5;
+}
+
+.normalcircle {
+  border-radius: 1000%;
+  width: 22.5rem;
+  height: 22.5rem;
+  background-color: transparent;
+  border: solid #0a0c19 1px;
+  position: absolute;
+  top: 58.75rem;
+  left: 128.75rem;
+  opacity: 0.5;
+}
+
+.smalldot {
+  border-radius: 1000%;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #0a0c19;
+  position: absolute;
+  top: 60.3rem;
+  left: 132.5rem;
+}
+
+.biggestdot {
+  border-radius: 1000%;
+  width: 25rem;
+  height: 25rem;
+  background-color: #0a0c19;
+  position: absolute;
+  top: 50rem;
+  left: 5rem;
+  opacity: 0.1;
+}
+
+.yellowdot {
+  border-radius: 1000%;
+  width: 50rem;
+  height: 50rem;
+  background-color: #eeca3a;
+  position: absolute;
+  top: 5rem;
+  left: 53rem;
+}
