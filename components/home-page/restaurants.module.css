@@ -1,0 +1,81 @@
+.header {
+  font-size: 3.4rem;
+  padding-left: 10rem;
+}
+
+.carousel {
+  width: 85vw;
+  margin: 0 auto;
+}
+
+.carouselItem {
+  text-decoration: none;
+  color: black;
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.mainHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.seeAll {
+  margin-right: 12rem;
+  display: flex;
+  font-size: 1.6rem;
+  align-items: center;
+  padding: 1rem 3rem;
+  background-color: #edf0eb;
+  border: solid 1px #0a0c19;
+  border-radius: 30px;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+.seeAllLink {
+  text-decoration: none;
+}
+
+.seeAll:hover {
+  transform: translateY(-0.7rem);
+  transition: all 0.4s;
+  box-shadow: 0 4px black;
+}
+
+.buttonGroup {
+  height: 0rem;
+}
+
+.chevronLeft {
+  transform: translateY(-36.5vh);
+  padding: 12rem 3rem;
+  border: none;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  transition: all 0.3s;
+}
+
+.chevronRight {
+  transform: translate(85vw, -36.5vh);
+  padding: 12rem 3.5rem;
+  border: none;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  transition: all 0.3s;
+}
+
+.chevronLeft:hover {
+  filter: none;
+  background-color: #eeca3a;
+  transition: all 0.3s;
+  transform: translateY(-36.5vh) scale(104%);
+}
+
+.chevronRight:hover {
+  filter: none;
+  background-color: #eeca3a;
+  transition: all 0.3s;
+  transform: translate(85vw, -36.5vh) scale(104%);
+}

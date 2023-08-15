@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+
+.footer {
+  margin-top: 6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #0a0c19;
+  color: #edf0eb;
+  position: relative;
+  padding: 3rem;
+}
+
+.icon {
+  font-family: "Permanent Marker", sans-serif;
+  font-size: 4rem;
+  width: 50vw;
+  margin-left: 5vw;
+  display: flex;
+  margin-top: 3rem;
+  align-items: center;
+  gap: 0.4rem;
+  z-index: 1000;
+}
+
+.link {
+  text-decoration: none;
+  color: #edf0eb;
+  font-size: 1.6rem;
+}
+
+.logoLink {
+  font-size: 3rem;
+}
+
+@keyframes up-right {
+  0% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  55% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.dot {
+  border-radius: 1000%;
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+.yel {
+  background-color: #eeca3a;
+  position: absolute;
+  animation: up-right 5s infinite;
+  transform: translateY(0.2rem);
+}
+
+.info {
+  width: 50vw;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10vw;
+  margin: 0 auto;
+  padding-right: 10vw;
+}
+
+.bigdot {
+  border-radius: 1000%;
+  width: 6.6rem;
+  height: 6.6rem;
+  background-color: #eeca3a;
+  position: absolute;
+  top: 5rem;
+  left: 6.8vw;
+}
+
+.socials {
+  display: flex;
+  gap: 2rem;
+  transform: translateY(-2rem);
+}
+
+.invert {
+  color: #edf0eb;
+  filter: invert(100);
+}
+
+.others {
+  padding-top: 1rem;
+}

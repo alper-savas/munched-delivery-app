@@ -35,9 +35,10 @@ const Navigation = () => {
           </li>
           <li>
             <Link
-              href="/"
+              href="/categories"
               className={`${classes.link} ${
-                router.pathname === "/categories" && classes.active
+                router.pathname.substring(0, 11) === "/categories" &&
+                classes.active
               }`}
             >
               Categories
@@ -45,9 +46,10 @@ const Navigation = () => {
           </li>
           <li>
             <Link
-              href="/"
+              href="/restaurants"
               className={`${classes.link} ${
-                router.pathname === "/restaurants" && classes.active
+                router.pathname.substring(0, 12) === "/restaurants" &&
+                classes.active
               }`}
             >
               Restaurants
@@ -81,6 +83,7 @@ const Navigation = () => {
           </li>
         </div>
       </ul>
+      <div className={classes.gap}></div>
     </nav>
   );
 };

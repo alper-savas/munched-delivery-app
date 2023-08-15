@@ -1,0 +1,45 @@
+.card {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.081);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card p {
+  margin-left: 1.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.card p:last-child {
+  margin-top: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.light {
+  color: #7777779b;
+  font-weight: 400;
+}
+
+.image {
+  transition: all 0.6s;
+}
+
+.image:hover {
+  transform: scale(110%);
+  transition: all 0.6s;
+  overflow: hidden;
+}
+
+.imageLayout {
+  overflow: hidden;
+  width: 300px;
+  height: 200px;
+}
+
+.name {
+  padding-top: 1.6rem;
+  padding-bottom: 1.2rem;
+}

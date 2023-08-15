@@ -1,0 +1,44 @@
+.collab {
+  margin-top: 8rem;
+}
+
+.header {
+  font-size: 3.4rem;
+  padding-left: 10rem;
+}
+
+.grid {
+  display: flex;
+  gap: 10rem;
+  font-size: 1.4rem;
+  width: 80vw;
+  margin: 5rem auto;
+  align-items: flex-start;
+}
+
+.info {
+  width: 100%;
+  margin-top: 5rem;
+}
+
+.info p {
+  font-size: 2rem;
+}
+
+.collaborateBtn {
+  display: flex;
+  font-size: 1.6rem;
+  align-items: center;
+  padding: 1rem 3rem;
+  background-color: #edf0eb;
+  border: solid 1px #0a0c19;
+  border-radius: 30px;
+  transition: all 0.4s;
+  margin-top: 4rem;
+}
+
+.collaborateBtn:hover {
+  transform: translateY(-0.7rem);
+  transition: all 0.4s;
+  box-shadow: 0 4px black;
+}

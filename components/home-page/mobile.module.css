@@ -1,0 +1,93 @@
+.mobile {
+  margin-top: 10rem;
+  padding-left: 8rem;
+  margin-bottom: 10rem;
+  overflow: hidden;
+}
+
+.grid {
+  display: flex;
+  font-size: 1.2rem;
+  margin: 2rem auto;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+}
+
+.info {
+  width: 30%;
+  margin-top: 12rem;
+  margin-left: 36rem;
+}
+
+.info h1 {
+  font-size: 4rem;
+}
+
+.image {
+  position: absolute;
+  z-index: -1;
+  left: -15rem;
+  height: 50vh;
+  transform: scale(310%) rotate(330deg);
+}
+
+.store {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 30rem;
+  left: 20rem;
+  background-color: #edf0eb;
+  padding: 1rem 2rem 7rem 2rem;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+}
+
+.play {
+  left: 32rem;
+}
+
+.stars {
+  padding-top: 1rem;
+}
+
+.store p {
+  font-size: 1.4rem;
+  margin-top: 0.8rem;
+}
+
+.illust {
+  margin-right: 10rem;
+}
+
+.people {
+  display: flex;
+  gap: 0.4rem;
+  position: absolute;
+  top: 35rem;
+  left: 55rem;
+}
+
+.personImg {
+  border-radius: 100px;
+}
+
+.button {
+  padding: 0.6rem;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+}
+
+.border {
+  background-color: #edf0eb;
+  border-radius: 100px;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  padding: 0.2rem;
+  border: transparent;
+}
