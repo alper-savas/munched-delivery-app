@@ -10,7 +10,7 @@ const Navigation = () => {
 
   return (
     <nav>
-      <ul className={classes.navigation}>
+      <ul className={`${classes.navigation}`}>
         <div className={classes.smalldot}></div>
         <div className={classes.logo}>
           <li>
@@ -63,8 +63,8 @@ const Navigation = () => {
                 src={checkoutIcon}
                 className={classes.checkout}
                 alt="Checkout"
-                height={22}
-                width={22}
+                height={24}
+                width={24}
               />
             </Link>
           </li>

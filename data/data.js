@@ -77,7 +77,7 @@ export const categoryItems = [
   },
   {
     id: uuid(),
-    url: "/images/noddle.jpg",
+    url: "/images/sushi.jpg",
     category: "Sushi",
     numberOfPlaces: 7,
   },
@@ -179,6 +179,40 @@ export const restaurantItems = [
     url: "/images/zola.jpeg",
     name: "Zola",
     category: "Pizza",
+    rating: "82",
+    price: "€€€",
+    info: "Neapolitan wood",
+    open: "10.00 PM",
+    fee: "2.99",
+    menu: [
+      {
+        pizza: [
+          {
+            name: "Margherita",
+            price: "10.50",
+            url: "/images/margherita.jpg",
+            ingredients: ["tomato sauce", "mozarella", "basil"],
+          },
+          {
+            name: "Marinara",
+            price: "9.50",
+            url: "/images/marinara.jpeg",
+            ingredients: ["tomato sauce", "basil", "garlic"],
+          },
+        ],
+      },
+      {
+        desserts: [
+          { name: "Souffle", price: "4.50", url: "/images/souffle.jpeg" },
+        ],
+      },
+      {
+        drinks: [
+          { name: "Coca Cola", price: "3.00", url: "/images/coke.jpg" },
+          { name: "Fanta", price: "3.00", url: "/images/fanta.jpg" },
+        ],
+      },
+    ],
   },
   {
     id: uuid(),
@@ -186,59 +220,200 @@ export const restaurantItems = [
     restaurantUrl: "",
     name: "Il Casolare",
     category: "Pizza",
+    rating: "",
+    price: "",
+    info: "",
+    menu: [
+      {
+        appetizers: [{}, "y"],
+        main: ["z", "l"],
+        desserts: ["k", "l"],
+        drinks: ["o", "p"],
+      },
+    ],
   },
   {
     id: uuid(),
     url: "/images/wencheng.webp",
     name: "Wen Cheng",
     category: "Noddle",
+    rating: "",
+    price: "",
+    info: "",
+    menu: [
+      {
+        appetizers: [{}, "y"],
+        main: ["z", "l"],
+        desserts: ["k", "l"],
+        drinks: ["o", "p"],
+      },
+    ],
   },
   {
     id: uuid(),
     url: "/images/burgermeister.jpeg",
     name: "Burgermeister",
     category: "Hamburger",
+    rating: "85",
+    price: "€€",
+    info: "Best burger in the heart of Kreuzberg",
+    open: "12.00 AM",
+    fee: "1.99",
+    menu: [
+      {
+        hamburger: [
+          {
+            name: "Hamburger",
+            price: "5.50",
+            url: "/images/classicHamburger.jpeg",
+            ingredients: ["beef", "cheddar", "lettuce", "tomato", "onion"],
+          },
+          {
+            name: "Meisterburger",
+            price: "6.50",
+            url: "/images/meisterburger.jpeg",
+            ingredients: [
+              "beef",
+              "cheddar",
+              "lettuce",
+              "tomato",
+              "onion",
+              "mushroom",
+              "bacon",
+            ],
+          },
+        ],
+      },
+      {
+        desserts: [
+          { name: "Cookie", price: "3.50", url: "/images/cookie.jpg" },
+        ],
+      },
+      {
+        drinks: [
+          { name: "Coca Cola", price: "3.00", url: "/images/coke.jpg" },
+          { name: "Fanta", price: "3.00", url: "/images/fanta.jpg" },
+        ],
+      },
+    ],
   },
   {
     id: uuid(),
     url: "/images/umami01.png",
     name: "Umami",
     category: "Asian",
+    rating: "",
+    price: "",
+    info: "",
+    menu: [
+      {
+        appetizers: [{}, "y"],
+        main: ["z", "l"],
+        desserts: ["k", "l"],
+        drinks: ["o", "p"],
+      },
+    ],
   },
   {
     id: uuid(),
     url: "/images/hasir.webp",
     name: "Hasir",
     category: "Döner",
+    rating: "",
+    price: "",
+    info: "",
+    menu: [
+      {
+        appetizers: [{}, "y"],
+        main: ["z", "l"],
+        desserts: ["k", "l"],
+        drinks: ["o", "p"],
+      },
+    ],
   },
   {
     id: uuid(),
     url: "/images/taqueria.jpeg",
     name: "Taqueria el Oso",
     category: "Taco",
+    rating: "",
+    price: "",
+    info: "",
+    menu: [
+      {
+        appetizers: [{}, "y"],
+        main: ["z", "l"],
+        desserts: ["k", "l"],
+        drinks: ["o", "p"],
+      },
+    ],
   },
   {
     id: uuid(),
     url: "/images/kfc.jpeg",
     name: "KFC",
     category: "Chicken",
+    rating: "",
+    price: "",
+    info: "",
+    menu: [
+      {
+        appetizers: [{}, "y"],
+        main: ["z", "l"],
+        desserts: ["k", "l"],
+        drinks: ["o", "p"],
+      },
+    ],
   },
   {
     id: uuid(),
     url: "/images/burgerking.webp",
     name: "Burger King",
     category: "Hamburger",
+    rating: "",
+    price: "",
+    info: "",
+    menu: [
+      {
+        appetizers: [{}, "y"],
+        main: ["z", "l"],
+        desserts: ["k", "l"],
+        drinks: ["o", "p"],
+      },
+    ],
   },
   {
     id: uuid(),
     url: "/images/subway.jpeg",
     name: "Subway",
     category: "Sandwich",
+    rating: "",
+    price: "",
+    info: "",
+    menu: [
+      {
+        appetizers: [{}, "y"],
+        main: ["z", "l"],
+        desserts: ["k", "l"],
+        drinks: ["o", "p"],
+      },
+    ],
   },
   {
     id: uuid(),
     url: "/images/starbucks.webp",
     name: "Starbucks",
     category: "Coffee",
+    rating: "",
+    price: "",
+    info: "",
+    menu: [
+      {
+        appetizers: [{}, "y"],
+        main: ["z", "l"],
+        desserts: ["k", "l"],
+        drinks: ["o", "p"],
+      },
+    ],
   },
 ];

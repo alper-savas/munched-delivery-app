@@ -114,5 +114,9 @@
 }
 
 .gap {
-  height: 10vh;
+  height: 8vh;
+}
+
+.checkout {
+  margin-top: 0.2rem;
 }
