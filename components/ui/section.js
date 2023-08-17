@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./section.module.css";
 import FoodCard from "./foodCard";
-import { capitalize } from "@/lib/helper";
+import { capitalize } from "@/utilities/helper";
 
 const Section = (props) => {
   const { section } = props;

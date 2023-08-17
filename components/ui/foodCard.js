@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./foodCard.module.css";
 import Image from "next/image";
 import add from "../../public/images/add-outline.svg";
 import remove from "../../public/images/remove-outline.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { orderActions } from "@/context";
 
 const FoodCard = (props) => {
   const { foodInfo } = props;
   const { name, price, ingredients, url } = foodInfo;
+  const dispatch = useDispatch();
+  const itemList = useSelector((state) => state.itemList);
+  const [content, setContent] = useState(
+    itemList.find((item) => item.item.name === name) !== undefined ? (
+      itemList.find((item) => item.item.name === name).quantity
+    ) : (
+      <Image src={add} height={20} width={20} />
+    )
+  );
+
   let currentIng = "with ";
   if (ingredients !== undefined) {
     ingredients.forEach((i, index) => {
@@ -19,6 +31,36 @@ const FoodCard = (props) => {
       }
     });
   }
+
+  const handleAddItem = (event) => {
+    event.preventDefault();
+
+    const item = {
+      name: name,
+      price: price,
+      ingredients: ingredients,
+      url: url,
+    };
+
+    dispatch(orderActions.addItem({ item: item }));
+  };
+
+  const handleRemoveItem = (event) => {
+    event.preventDefault();
+
+    dispatch(orderActions.removeItem({ item: name }));
+  };
+
+  const handleContentMouseEnter = () => {
+    setContent(<Image src={add} height={20} width={20} />);
+  };
+
+  const handleContentMouseLeave = () => {
+    setContent(
+      itemList.find((item) => item.item.name === name) !== undefined &&
+        itemList.find((item) => item.item.name === name).quantity
+    );
+  };
 
   return (
     <div className={classes.food}>
@@ -42,11 +84,16 @@ const FoodCard = (props) => {
       </div>
       <div className={classes.buttons}>
         <p className={classes.price}>€{price}</p>
-        <button className={classes.button}>
+        <button className={classes.button} onClick={handleRemoveItem}>
           <Image src={remove} height={20} width={20} />
         </button>
-        <button className={classes.button}>
-          <Image src={add} height={20} width={20} />
+        <button
+          className={classes.button}
+          onClick={handleAddItem}
+          onMouseEnter={handleContentMouseEnter}
+          onMouseLeave={handleContentMouseLeave}
+        >
+          {content}
         </button>
       </div>
     </div>
