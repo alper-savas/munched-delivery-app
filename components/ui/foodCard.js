@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import classes from "./foodCard.module.css";
 import Image from "next/image";
 import add from "../../public/images/add-outline.svg";
@@ -15,7 +15,7 @@ const FoodCard = (props) => {
     itemList.find((item) => item.item.name === name) !== undefined ? (
       itemList.find((item) => item.item.name === name).quantity
     ) : (
-      <Image src={add} height={20} width={20} />
+      <Image src={add} height={30} width={30} />
     )
   );
 
@@ -49,16 +49,31 @@ const FoodCard = (props) => {
     event.preventDefault();
 
     dispatch(orderActions.removeItem({ item: name }));
+
+    if (itemList.find((item) => item.item.name === name) !== undefined) {
+      if (itemList.find((item) => item.item.name === name).quantity - 1 !== 0) {
+        setContent(
+          itemList.find((item) => item.item.name === name).quantity - 1
+        );
+      } else {
+        setContent(<Image src={add} height={20} width={20} />);
+      }
+    } else {
+      setContent(<Image src={add} height={30} width={30} />);
+    }
   };
 
   const handleContentMouseEnter = () => {
-    setContent(<Image src={add} height={20} width={20} />);
+    setContent(<Image src={add} height={30} width={30} />);
   };
 
   const handleContentMouseLeave = () => {
     setContent(
-      itemList.find((item) => item.item.name === name) !== undefined &&
+      itemList.find((item) => item.item.name === name) !== undefined ? (
         itemList.find((item) => item.item.name === name).quantity
+      ) : (
+        <Image src={add} height={30} width={30} />
+      )
     );
   };
 
@@ -85,7 +100,7 @@ const FoodCard = (props) => {
       <div className={classes.buttons}>
         <p className={classes.price}>€{price}</p>
         <button className={classes.button} onClick={handleRemoveItem}>
-          <Image src={remove} height={20} width={20} />
+          <Image src={remove} height={30} width={30} />
         </button>
         <button
           className={classes.button}

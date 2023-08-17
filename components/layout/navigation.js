@@ -1,12 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./navigation.module.css";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import checkoutIcon from "../../public/images/bag-check-outline.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { orderActions } from "@/context";
 
 const Navigation = () => {
   const router = useRouter();
+  const quantity = useSelector((state) => state.totalQuantity);
+  const isOpen = useSelector((state) => state.isOpen);
+  const dispatch = useDispatch();
+  const [animated, setAnimated] = useState(false);
+
+  const animation = `${classes.quantity} ${animated ? classes.bump : ""}`;
+
+  useEffect(() => {
+    setAnimated(true);
+
+    const timer = setTimeout(() => {
+      setAnimated(false);
+    }, 300);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [quantity]);
+
+  const handleClick = () => {
+    if (isOpen) {
+      dispatch(orderActions.closeCard());
+    } else {
+      dispatch(orderActions.openCard());
+    }
+  };
 
   return (
     <nav>
@@ -58,7 +86,12 @@ const Navigation = () => {
         </div>
         <div className={classes.endNav}>
           <li>
-            <Link href="/" className={classes.link}>
+            <button
+              className={`${classes.button} ${
+                router.pathname !== "/restaurants/[slug]" && classes.hide
+              }`}
+              onClick={handleClick}
+            >
               <Image
                 src={checkoutIcon}
                 className={classes.checkout}
@@ -66,9 +99,14 @@ const Navigation = () => {
                 height={24}
                 width={24}
               />
-            </Link>
+              {quantity > 0 && <span className={animation}>{quantity}</span>}
+            </button>
           </li>
-          <div className={classes.hr}></div>
+          <div
+            className={`${classes.hr} ${
+              router.pathname !== "/restaurants/[slug]" && classes.hide
+            }`}
+          ></div>
           <li>
             <Link href="/" className={classes.link}>
               Log in

@@ -1,9 +1,14 @@
 import React from "react";
 import { restaurantItems } from "@/data/data";
 import SingleRestaurant from "@/components/restaurants/single-restaurant";
+import { useDispatch } from "react-redux";
+import { orderActions } from "@/context";
 
 const SelectedRestaurant = (props) => {
   const { restaurant } = props;
+  const dispatch = useDispatch();
+  dispatch(orderActions.clear());
+
   return <SingleRestaurant restaurant={restaurant} />;
 };
 

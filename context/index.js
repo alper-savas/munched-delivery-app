@@ -3,6 +3,8 @@ import { createSlice, configureStore, current } from "@reduxjs/toolkit";
 export const initialState = {
   itemList: [],
   totalQuantity: 0,
+  isOpen: false,
+  deliveryFee: 0,
 };
 
 const orderSlice = createSlice({
@@ -25,36 +27,52 @@ const orderSlice = createSlice({
         const currentItem = state.itemList.find(
           (item) => item.item.name === action.payload.item.name
         );
-        currentItem.quantity += 1;
+        currentItem.quantity++;
         state.itemList = [...state.itemList];
       }
-      state.totalQuantity += 1;
+      state.totalQuantity++;
     },
     removeItem(state, action) {
-      if (state.itemList.length <= 1) {
-        if (state.itemList[0].quantity === 1) {
-          state.itemList = [];
-        } else {
-          state.itemList[0].quantity -= 1;
-          state.itemList = [...state.itemList];
-        }
-      } else {
-        const currentItem = state.itemList.find(
+      const isDefined =
+        state.itemList.find(
           (item) => item.item.name === action.payload.item
-        );
-        if (currentItem.quantity === 1) {
-          state.itemList = state.itemList.filter(
-            (item) => item.item.name !== action.payload.item
-          );
-        } else {
-          currentItem.quantity -= 1;
+        ) !== undefined;
+      if (state.itemList.length === 0) {
+        state.itemList = [];
+      } else {
+        if (!isDefined) {
           state.itemList = [...state.itemList];
+        } else {
+          const currentItem = state.itemList.find(
+            (item) => item.item.name === action.payload.item
+          );
+          if (currentItem.quantity === 1) {
+            state.itemList = state.itemList.filter(
+              (item) => item.item.name !== action.payload.item
+            );
+          } else {
+            currentItem.quantity--;
+            state.itemList = [...state.itemList];
+          }
         }
       }
-      state.totalQuantity += 1;
+      if (state.totalQuantity > 0 && isDefined) {
+        state.totalQuantity--;
+      }
     },
-    openCard(state) {},
-    closeCard(state) {},
+    openCard(state) {
+      state.isOpen = true;
+    },
+    closeCard(state) {
+      state.isOpen = false;
+    },
+    setDeliveryFee(state, action) {
+      state.deliveryFee = action.payload.deliveryFee;
+    },
+    clear(state) {
+      state.itemList = [];
+      state.totalQuantity = 0;
+    },
   },
 });
 
