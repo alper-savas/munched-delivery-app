@@ -6,13 +6,16 @@ import Image from "next/image";
 import checkoutIcon from "../../public/images/bag-check-outline.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { orderActions } from "@/context";
+import { useSession } from "next-auth/react";
 
 const Navigation = () => {
   const router = useRouter();
   const quantity = useSelector((state) => state.totalQuantity);
   const isOpen = useSelector((state) => state.isOpen);
+  const imageUrl = useSelector((state) => state.user.photo);
   const dispatch = useDispatch();
   const [animated, setAnimated] = useState(false);
+  const { data: session, status } = useSession();
 
   const animation = `${classes.quantity} ${animated ? classes.bump : ""}`;
 
@@ -107,18 +110,41 @@ const Navigation = () => {
               router.pathname !== "/restaurants/[slug]" && classes.hide
             }`}
           ></div>
-          <li>
-            <Link href="/" className={classes.link}>
-              Log in
+          {status === "authenticated" ? (
+            <Link href="/profile">
+              <div className={classes.imageContainer}>
+                <Image
+                  loader={() =>
+                    "https://mpng.hippopng.com/20180404/sqe/kisspng-computer-icons-user-profile-clip-art-big-5ac5283827d286.2570974715228703281631.jpg"
+                  }
+                  src={
+                    "https://mpng.hippopng.com/20180404/sqe/kisspng-computer-icons-user-profile-clip-art-big-5ac5283827d286.2570974715228703281631.jpg"
+                  }
+                  height={40}
+                  width={40}
+                  className={classes.profile}
+                ></Image>
+              </div>
             </Link>
-          </li>
-          <li>
-            <button className={classes.signupBtn}>
-              <Link href="/" className={`${classes.link} ${classes.signup}`}>
-                Sign up
-              </Link>
-            </button>
-          </li>
+          ) : (
+            <div className={classes.register}>
+              <li>
+                <Link href="/register/login" className={classes.link}>
+                  Log in
+                </Link>
+              </li>
+              <li>
+                <button className={classes.signupBtn}>
+                  <Link
+                    href="/register/signup"
+                    className={`${classes.link} ${classes.signup}`}
+                  >
+                    Sign up
+                  </Link>
+                </button>
+              </li>
+            </div>
+          )}
         </div>
       </ul>
       <div className={classes.gap}></div>

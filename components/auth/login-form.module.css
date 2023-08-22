@@ -1,0 +1,99 @@
+.formContainer {
+  width: 90%;
+  margin: 10vh auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+  gap: 2rem;
+}
+
+.formBox {
+  padding: 1.6rem 14rem 1.6rem 1rem;
+  font-size: 2rem;
+  border-radius: 10px;
+  border: none;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.mainButton {
+  margin-top: 2rem;
+  font-size: 2rem;
+  font-weight: 600;
+  border: solid 1.5px #0a0c19;
+  background-color: #eeca3a;
+  padding: 1.2rem 8rem;
+  border-radius: 30px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.mainButton:hover {
+  transform: translateY(-0.2rem);
+  box-shadow: 0rem 0.5rem #0a0c19;
+  transition: all 0.3s;
+}
+
+.changeMode {
+  font-size: 2rem;
+  border: none;
+  cursor: pointer;
+  color: #0a0c19;
+  text-decoration: none;
+}
+
+.active {
+  text-decoration: underline;
+}
+
+.spinnerContainer {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+
+.spinnerContainerAuth {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+}
+
+.spinner {
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.invalid {
+  color: #a7171a;
+  margin-bottom: 0 !important;
+}
+
+.invalidBox {
+  background-color: #e9a8a987;
+  border: solid 1px #a7171a;
+}
+
+.block {
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.7;
+}

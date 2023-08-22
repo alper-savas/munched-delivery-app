@@ -1,10 +1,11 @@
-import { createSlice, configureStore, current } from "@reduxjs/toolkit";
+import { createSlice, configureStore } from "@reduxjs/toolkit";
 
 export const initialState = {
   itemList: [],
   totalQuantity: 0,
   isOpen: false,
   deliveryFee: 0,
+  user: [],
 };
 
 const orderSlice = createSlice({
@@ -72,6 +73,9 @@ const orderSlice = createSlice({
     clear(state) {
       state.itemList = [];
       state.totalQuantity = 0;
+    },
+    setUser(state, action) {
+      state.user = action.payload.userObj;
     },
   },
 });

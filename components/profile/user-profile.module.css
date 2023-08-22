@@ -1,0 +1,35 @@
+.container {
+  height: 50vh;
+  margin: 10rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logout {
+  font-size: 2rem;
+  padding: 2rem 4rem;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.spinnerContainer {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+
+.spinner {
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -31,9 +31,9 @@
 
 .midNav {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: 5rem;
+  transform: translateX(6rem);
 }
 
 .endNav {
@@ -171,4 +171,24 @@
 
 .hide {
   filter: opacity(0);
+}
+
+.register {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.profile {
+  filter: invert(10%);
+}
+
+.imageContainer {
+  margin-left: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  overflow: hidden;
 }

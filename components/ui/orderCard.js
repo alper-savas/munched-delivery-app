@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { orderActions } from "@/context";
 import close from "../../public/images/close-outline.svg";
+import { formatPrice } from "@/utilities/helper";
 
 const OrderCard = () => {
   const dispatch = useDispatch();
@@ -39,9 +40,10 @@ const OrderCard = () => {
               <h1 className={classes.header}>Order Summary</h1>
               {itemList.map((item) => {
                 {
-                  const currPrice =
+                  const currPrice = formatPrice(
                     +JSON.stringify(item.item.price).replaceAll(`"`, "") *
-                    item.quantity;
+                      item.quantity
+                  );
                   return (
                     <div className={classes.singleItem}>
                       <div className={classes.itemQuantity}>
@@ -59,16 +61,16 @@ const OrderCard = () => {
               <div className={classes.allPrice}>
                 <div className={classes.subtotal}>
                   <p className={classes.price}>Subtotal</p>
-                  <p className={classes.price}>{totalPrice}€</p>
+                  <p className={classes.price}>{formatPrice(totalPrice)}€</p>
                 </div>
                 <div className={classes.subtotal}>
                   <p className={classes.price}>Delivery Fee</p>
-                  <p className={classes.price}>{fee}€</p>
+                  <p className={classes.price}>{formatPrice(fee)}€</p>
                 </div>
                 <div className={classes.subtotal}>
                   <p className={classes.total}>Total</p>
                   <p className={classes.total}>
-                    {(totalPrice + +fee).toString().slice(0, 5)}€
+                    {formatPrice((totalPrice + +fee).toString().slice(0, 5))}€
                   </p>
                 </div>
               </div>

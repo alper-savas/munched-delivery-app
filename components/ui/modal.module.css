@@ -14,8 +14,9 @@
   background-color: #edf0eb;
   top: 6.5rem;
   z-index: 30;
-  animation: slide-down 500ms ease-out forwards;
+  animation: slide-left 500ms ease-out forwards;
   height: 100vh;
+  width: 30vw !important;
 }
 
 @media (min-width: 768px) {
@@ -25,14 +26,14 @@
   }
 }
 
-@keyframes slide-down {
+@keyframes slide-left {
   from {
     opacity: 0;
     transform: translateX(100rem);
   }
   to {
     opacity: 1;
-    transform: translateX(75vh);
+    transform: translateX(72.5vh);
   }
 }
 
