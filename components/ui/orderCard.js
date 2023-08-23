@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { orderActions } from "@/context";
 import close from "../../public/images/close-outline.svg";
 import { formatPrice } from "@/utilities/helper";
+import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 const OrderCard = () => {
   const dispatch = useDispatch();
@@ -17,6 +19,7 @@ const OrderCard = () => {
     const itemPrice = item.item.price * item.quantity;
     totalPrice += itemPrice;
   });
+  const { data: session, status } = useSession();
 
   const handleClick = () => {
     if (isOpen) {
@@ -24,6 +27,7 @@ const OrderCard = () => {
     } else {
       dispatch(orderActions.openCard());
     }
+    dispatch(orderActions.setCheckout());
   };
 
   return (
@@ -76,9 +80,15 @@ const OrderCard = () => {
               </div>
             </div>
             <div className={classes.finish}>
-              <button className={classes.checkout}>
-                Checkout ({(totalPrice + +fee).toString().slice(0, 5)}€)
-              </button>
+              <Link
+                href={`${
+                  status === `authenticated` ? `/checkout` : `/register`
+                }`}
+              >
+                <button className={classes.checkout} onClick={handleClick}>
+                  Checkout ({(totalPrice + +fee).toString().slice(0, 5)}€)
+                </button>
+              </Link>
             </div>
           </div>
         )}

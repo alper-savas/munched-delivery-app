@@ -9,9 +9,12 @@ const handler = async (req, res) => {
 
   const data = req.body;
 
-  const { email, password, street, house, postcode, city, favourites } = data;
+  const { name, email, password, street, house, postcode, city, favorites } =
+    data;
 
   if (
+    !name ||
+    !name.trim().length === 0 ||
     !email ||
     !email.includes("@") ||
     !password ||
@@ -45,13 +48,14 @@ const handler = async (req, res) => {
   const hashedPassword = await hashPassword(password);
 
   const result = await db.collection("profiles").insertOne({
+    name: name,
     email: email,
     password: hashedPassword,
     street: street,
     house: house,
     postcode: postcode,
     city: city,
-    favourites: favourites,
+    favorites: favorites,
   });
 
   res.status(201).json({ message: "User created!" });

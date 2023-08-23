@@ -7,11 +7,9 @@ import context from "../../context/index";
 const Layout = (props) => {
   return (
     <Provider store={context}>
-      <Fragment>
-        <Navigation />
-        <main>{props.children}</main>
-        <Footer />
-      </Fragment>
+      <Navigation />
+      <main>{props.children}</main>
+      <Footer />
     </Provider>
   );
 };

@@ -181,7 +181,7 @@
 }
 
 .profile {
-  filter: invert(10%);
+  filter: invert(5%);
 }
 
 .imageContainer {
@@ -191,4 +191,12 @@
   align-items: center;
   border-radius: 30px;
   overflow: hidden;
+}
+
+.adjustEndnav {
+  margin-left: 7rem;
+}
+
+.removeMargin {
+  margin-left: 0 !important;
 }

@@ -2,23 +2,34 @@ import React, { useState, useRef } from "react";
 import classes from "./signup-form.module.css";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import { useSelector, useDispatch } from "react-redux";
 import Image from "next/image";
 import Link from "next/link";
 import spinner from "../../public/images/spinner-solid.svg";
 import { isNumeric } from "@/utilities/helper";
 import { signIn } from "next-auth/react";
+import { orderActions } from "@/context";
 
-const createUser = async (email, password, street, house, postcode, city) => {
+const createUser = async (
+  name,
+  email,
+  password,
+  street,
+  house,
+  postcode,
+  city
+) => {
   const response = await fetch("/api/auth/signup", {
     method: "POST",
     body: JSON.stringify({
+      name: name,
       email: email,
       password: password,
       street: street,
       house: house,
       postcode: postcode,
       city: city,
-      favourites: [],
+      favorites: [],
     }),
     headers: {
       "Content-Type": "application/json",
@@ -35,6 +46,7 @@ const createUser = async (email, password, street, house, postcode, city) => {
 };
 
 const SignupForm = () => {
+  const nameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const streetRef = useRef();
@@ -42,6 +54,8 @@ const SignupForm = () => {
   const postcodeRef = useRef();
   const cityRef = useRef();
   const noteRef = useRef();
+  const [nameIsValid, setNameIsValid] = useState(false);
+  const [nameIsTouched, setNameIsTouched] = useState(false);
   const [emailIsValid, setEmailIsValid] = useState(false);
   const [emailIsTouched, setEmailIsTouched] = useState(false);
   const [passwordIsValid, setPasswordIsValid] = useState(false);
@@ -56,10 +70,12 @@ const SignupForm = () => {
   const [cityIsTouched, setCityIsTouched] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const { data: session, status } = useSession();
+  const checkout = useSelector((state) => state.checkout);
   const router = useRouter();
   const [authenticate, setAuthenticate] = useState(true);
   const [loadingAuth, setLoadingAuth] = useState(false);
   const [resMes, setResMes] = useState("");
+  const dispatch = useDispatch();
 
   if (status === "loading") {
     return (
@@ -75,7 +91,12 @@ const SignupForm = () => {
   }
 
   if (status === "authenticated") {
-    router.replace("/");
+    if (checkout) {
+      router.replace("/checkout");
+    } else {
+      router.replace("/");
+    }
+
     return (
       <div className={classes.spinnerContainer}>
         <Image
@@ -90,6 +111,28 @@ const SignupForm = () => {
 
   const toggleActive = () => {
     setIsActive((prevState) => !prevState);
+  };
+
+  const nameBlurHandler = (event) => {
+    setNameIsTouched(true);
+
+    if (event.target.value !== undefined) {
+      if (event.target.value.trim() !== "") {
+        setNameIsValid(true);
+      } else {
+        setNameIsValid(false);
+      }
+    }
+  };
+
+  const nameChangeHandler = (event) => {
+    if (event.target.value !== undefined) {
+      if (event.target.value.trim() !== "") {
+        setNameIsValid(true);
+      } else {
+        setNameIsValid(false);
+      }
+    }
   };
 
   const emailBlurHandler = (event) => {
@@ -241,6 +284,7 @@ const SignupForm = () => {
     setLoadingAuth(true);
     setAuthenticate(true);
 
+    const enteredName = nameRef.current.value;
     const enteredEmail = emailRef.current.value;
     const enteredPassword = passwordRef.current.value;
     const enteredStreet = streetRef.current.value;
@@ -248,6 +292,15 @@ const SignupForm = () => {
     const enteredPostcode = postcodeRef.current.value;
     const enteredCity = cityRef.current.value;
     const enteredNote = noteRef.current.value;
+
+    // name
+    if (enteredName !== undefined) {
+      if (enteredName.trim().length === 0) {
+        setCityIsValid(false);
+        return;
+      }
+    }
+    setCityIsValid(true);
 
     // email
     setEmailIsTouched(true);
@@ -309,6 +362,7 @@ const SignupForm = () => {
 
     try {
       const result = await createUser(
+        enteredName,
         enteredEmail,
         enteredPassword,
         enteredStreet,
@@ -333,6 +387,7 @@ const SignupForm = () => {
         enteredPostcode: enteredPostcode,
         enteredCity: enteredCity,
       });
+      dispatch(orderActions.clearUser());
     } catch (error) {
       setAuthenticate(false);
       setResMes(error.message);
@@ -341,6 +396,7 @@ const SignupForm = () => {
   };
 
   const isValid =
+    (!nameIsValid && nameIsTouched) ||
     (!emailIsValid && emailIsTouched) ||
     (!passwordIsValid && passwordIsTouched) ||
     (!streetIsValid && streetIsTouched) ||
@@ -444,6 +500,23 @@ const SignupForm = () => {
           </div>
           <h2>Personal Information</h2>
           <div className={classes.personalInfo}>
+            <div className={classes.name}>
+              <input
+                type="text"
+                id="name"
+                ref={nameRef}
+                placeholder="Name"
+                className={`${classes.formBox} ${
+                  !nameIsValid && nameIsTouched && classes.invalidBox
+                }`}
+                onBlur={nameBlurHandler}
+                onChange={nameChangeHandler}
+                required
+              />
+              {!nameIsValid && nameIsTouched && (
+                <p className={classes.invalid}>Name can not be empty</p>
+              )}
+            </div>
             <div className={classes.email}>
               <input
                 type="email"

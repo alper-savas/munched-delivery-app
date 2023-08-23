@@ -1,6 +1,6 @@
 .formContainer {
   width: 90%;
-  margin: 10vh auto;
+  margin: 8vh auto 12vh auto;
   display: flex;
   flex-direction: column;
   justify-content: center;

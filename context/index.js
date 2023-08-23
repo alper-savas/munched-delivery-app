@@ -6,6 +6,7 @@ export const initialState = {
   isOpen: false,
   deliveryFee: 0,
   user: [],
+  checkout: false,
 };
 
 const orderSlice = createSlice({
@@ -76,6 +77,12 @@ const orderSlice = createSlice({
     },
     setUser(state, action) {
       state.user = action.payload.userObj;
+    },
+    clearUser(state) {
+      state.user = [];
+    },
+    setCheckout(state) {
+      state.checkout = true;
     },
   },
 });

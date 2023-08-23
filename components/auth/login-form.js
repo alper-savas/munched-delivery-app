@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import classes from "./login-form.module.css";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,6 +14,7 @@ const LoginForm = () => {
   const [isActive, setIsActive] = useState(false);
   const { data: session, status } = useSession();
   const router = useRouter();
+  const checkout = useSelector((state) => state.checkout);
   const [emailIsValid, setEmailIsValid] = useState(false);
   const [emailIsTouched, setEmailIsTouched] = useState(false);
   const [passwordIsValid, setPasswordIsValid] = useState(false);
@@ -34,7 +36,12 @@ const LoginForm = () => {
   }
 
   if (status === "authenticated") {
-    router.replace("/");
+    if (checkout) {
+      router.replace("/checkout");
+    } else {
+      router.replace("/");
+    }
+
     return (
       <div className={classes.spinnerContainer}>
         <Image

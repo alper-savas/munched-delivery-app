@@ -1,0 +1,39 @@
+.container {
+  margin-top: 5rem;
+  font-size: 1.7rem;
+  height: 55vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register {
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  margin: 1rem auto;
+  width: 30vw;
+  font-size: 2rem;
+  font-weight: 500;
+  border: solid 1px #0a0c197d;
+  background-color: #edf0eb;
+  padding: 1.6rem;
+  border-radius: 20px;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0rem 0.5rem #0a0c19;
+  transition: all 0.4s;
+}
+
+.signupBtn {
+  background-color: #eeca3a;
+}

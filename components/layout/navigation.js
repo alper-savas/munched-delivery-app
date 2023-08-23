@@ -87,7 +87,11 @@ const Navigation = () => {
             </Link>
           </li>
         </div>
-        <div className={classes.endNav}>
+        <div
+          className={`${classes.endNav} ${
+            status === `authenticated` && classes.adjustEndnav
+          }`}
+        >
           <li>
             <button
               className={`${classes.button} ${
@@ -107,12 +111,18 @@ const Navigation = () => {
           </li>
           <div
             className={`${classes.hr} ${
-              router.pathname !== "/restaurants/[slug]" && classes.hide
+              (router.pathname !== "/restaurants/[slug]" ||
+                status === `authenticated`) &&
+              classes.hide
             }`}
           ></div>
           {status === "authenticated" ? (
             <Link href="/profile">
-              <div className={classes.imageContainer}>
+              <div
+                className={`${classes.imageContainer} ${
+                  status === `authenticated` && classes.removeMargin
+                }`}
+              >
                 <Image
                   loader={() =>
                     "https://mpng.hippopng.com/20180404/sqe/kisspng-computer-icons-user-profile-clip-art-big-5ac5283827d286.2570974715228703281631.jpg"
@@ -120,8 +130,8 @@ const Navigation = () => {
                   src={
                     "https://mpng.hippopng.com/20180404/sqe/kisspng-computer-icons-user-profile-clip-art-big-5ac5283827d286.2570974715228703281631.jpg"
                   }
-                  height={40}
-                  width={40}
+                  height={33}
+                  width={33}
                   className={classes.profile}
                 ></Image>
               </div>

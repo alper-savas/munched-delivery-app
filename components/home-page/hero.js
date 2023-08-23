@@ -4,35 +4,9 @@ import Image from "next/image";
 import heroImage2 from "../../public/images/My project02.png";
 import heroImage1 from "../../public/images/My project.png";
 import searchIcon from "../../public/images/search-outline.svg";
-import { useDispatch } from "react-redux";
-import { orderActions } from "@/context";
-import { useSession } from "next-auth/react";
 
 const Hero = () => {
   const [searchInput, setSearchInput] = useState("");
-  const dispatch = useDispatch();
-  const { data: session, status } = useSession();
-  const [userData, setUserData] = useState();
-
-  useEffect(() => {
-    const getUsers = async () => {
-      const response = await fetch("/api/auth/get-users");
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.message || "Something went wrong");
-      }
-      setUserData(data);
-      if (userData?.users) {
-        const selected = userData.users.find((user) => {
-          return user.email == session.user.email;
-        });
-        dispatch(orderActions.setUser({ userObj: selected }));
-      }
-    };
-    if (status === "authenticated") {
-      getUsers();
-    }
-  }, [userData]);
 
   const handlerSearchChange = (event) => {
     event.preventDefault();
