@@ -3,14 +3,23 @@ import classes from "./hero.module.css";
 import Image from "next/image";
 import heroImage2 from "../../public/images/My project02.png";
 import heroImage1 from "../../public/images/My project.png";
-import searchIcon from "../../public/images/search-outline.svg";
+import { ReactSearchAutocomplete } from "react-search-autocomplete";
+import { restaurantItems } from "@/data/data";
+import { useRouter } from "next/router";
 
 const Hero = () => {
-  const [searchInput, setSearchInput] = useState("");
+  const router = useRouter();
+  const restaurants = restaurantItems.map((restaurant) => {
+    return { id: restaurant.id, name: restaurant.name, url: restaurant.url };
+  });
 
-  const handlerSearchChange = (event) => {
-    event.preventDefault();
-    setSearchInput(event.target.value);
+  const formatResult = (item) => {
+    return (
+      <div className={classes.searchItemDiv}>
+        <Image src={item.url} height={60} width={90}></Image>
+        <p className={classes.searchItem}>{item.name}</p>
+      </div>
+    );
   };
 
   return (
@@ -52,21 +61,21 @@ const Hero = () => {
         </div>
         <div className={classes.lower}>
           <div className={classes.searchBar}>
-            <input
-              type="text"
-              placeholder="Search in Munched..."
-              onChange={handlerSearchChange}
-              value={searchInput}
+            <ReactSearchAutocomplete
+              items={restaurants}
+              onSelect={(item) => router.replace(`/restaurants/${item.name}`)}
+              formatResult={formatResult}
               className={classes.searchInput}
+              styling={{
+                fontSize: 2,
+                iconColor: "black",
+                borderRadius: "12px",
+              }}
+              placeholder="Search in Munched..."
+              fuseOptions={{ threshold: 0 }}
+              showIcon={false}
+              maxResults={3}
             />
-            <Image
-              src={searchIcon}
-              className={classes.searchIcon}
-              alt="Search"
-              height={18}
-              width={18}
-            />
-            <button className={classes.searchButton}>Search</button>
           </div>
         </div>
       </div>

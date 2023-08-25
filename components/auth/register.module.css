@@ -37,3 +37,9 @@
 .signupBtn {
   background-color: #eeca3a;
 }
+
+.header {
+  font-weight: 400;
+  margin: 0 !important;
+  font-size: 2.2rem;
+}

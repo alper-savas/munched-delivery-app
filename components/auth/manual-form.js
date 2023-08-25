@@ -11,9 +11,12 @@ const ManualForm = () => {
   const numberRef = useRef();
   const postcodeRef = useRef();
   const cityRef = useRef();
+  const emailRef = useRef();
   const noteRef = useRef();
   const [nameIsValid, setNameIsValid] = useState(false);
   const [nameIsTouched, setNameIsTouched] = useState(false);
+  const [emailIsValid, setEmailIsValid] = useState(false);
+  const [emailIsTouched, setEmailIsTouched] = useState(false);
   const [streetIsValid, setStreetIsValid] = useState(false);
   const [streetIsTouched, setStreetIsTouched] = useState(false);
   const [numberIsValid, setNumberIsValid] = useState(false);
@@ -43,6 +46,34 @@ const ManualForm = () => {
         setNameIsValid(true);
       } else {
         setNameIsValid(false);
+      }
+    }
+  };
+
+  const emailBlurHandler = (event) => {
+    setEmailIsTouched(true);
+
+    if (event.target.value !== undefined) {
+      if (
+        event.target.value.trim() !== "" &&
+        event.target.value.includes("@")
+      ) {
+        setEmailIsValid(true);
+      } else {
+        setEmailIsValid(false);
+      }
+    }
+  };
+
+  const emailChangeHandler = (event) => {
+    if (event.target.value !== undefined) {
+      if (
+        event.target.value.trim() !== "" &&
+        event.target.value.includes("@")
+      ) {
+        setEmailIsValid(true);
+      } else {
+        setEmailIsValid(false);
       }
     }
   };
@@ -145,62 +176,73 @@ const ManualForm = () => {
     event.preventDefault();
 
     const enteredName = nameRef.current.value;
+    const enteredEmail = emailRef.current.value;
     const enteredStreet = streetRef.current.value;
     const enteredNumber = numberRef.current.value;
     const enteredPostcode = postcodeRef.current.value;
     const enteredCity = cityRef.current.value;
     const enteredNote = noteRef.current.value;
 
-    // // name
-    // if (enteredName !== undefined) {
-    //   if (enteredName.trim().length === 0) {
-    //     setCityIsValid(false);
-    //     return;
-    //   }
-    // }
-    // setCityIsValid(true);
+    // name
+    if (enteredName !== undefined) {
+      if (enteredName.trim().length === 0) {
+        setNameIsValid(false);
+        return;
+      }
+    }
+    setNameIsValid(true);
 
-    // // street
-    // if (enteredStreet !== undefined) {
-    //   if (enteredStreet.trim().length === 5) {
-    //     setStreetIsValid(false);
-    //     return;
-    //   }
-    // }
-    // setStreetIsValid(true);
+    // email
+    if (enteredEmail !== undefined) {
+      if (enteredEmail.trim().length === 0) {
+        setEmailIsValid(false);
+        return;
+      }
+    }
+    setEmailIsValid(true);
 
-    // // number
-    // if (enteredNumber !== undefined) {
-    //   if (enteredNumber.trim().length === 5) {
-    //     setPasswordIsValid(false);
-    //     return;
-    //   }
-    // }
-    // setNumberIsValid(true);
+    // street
+    if (enteredStreet !== undefined) {
+      if (enteredStreet.trim().length === 0) {
+        setStreetIsValid(false);
+        return;
+      }
+    }
+    setStreetIsValid(true);
 
-    // // postcode
-    // if (enteredPostcode !== undefined) {
-    //   if (
-    //     !enteredPostcode.trim().length === 5 ||
-    //     !isNumeric(enteredPostcode.trim())
-    //   ) {
-    //     setPostcodeIsValid(false);
-    //     return;
-    //   }
-    // }
-    // setPostcodeIsValid(true);
+    // number
+    if (enteredNumber !== undefined) {
+      if (enteredNumber.trim().length === 0) {
+        setNumberIsValid(false);
+        return;
+      }
+    }
+    setNumberIsValid(true);
 
-    // // city
-    // if (enteredCity !== undefined) {
-    //   if (enteredCity.trim().length === 0) {
-    //     setCityIsValid(false);
-    //     return;
-    //   }
-    // }
-    // setCityIsValid(true);
+    // postcode
+    if (enteredPostcode !== undefined) {
+      if (
+        !enteredPostcode.trim().length === 5 ||
+        !isNumeric(enteredPostcode.trim())
+      ) {
+        setPostcodeIsValid(false);
+        return;
+      }
+    }
+    setPostcodeIsValid(true);
+
+    // city
+    if (enteredCity !== undefined) {
+      if (enteredCity.trim().length === 0) {
+        setCityIsValid(false);
+        return;
+      }
+    }
+    setCityIsValid(true);
 
     const user = {
       name: enteredName,
+      email: enteredEmail,
       street: enteredStreet,
       number: enteredNumber,
       postcode: enteredPostcode,
@@ -212,6 +254,7 @@ const ManualForm = () => {
 
   const isValid =
     (!nameIsValid && nameIsTouched) ||
+    (!emailIsValid && emailIsTouched) ||
     (!streetIsValid && streetIsTouched) ||
     (!numberIsValid && numberIsTouched) ||
     (!cityIsValid && cityIsTouched) ||
@@ -327,6 +370,25 @@ const ManualForm = () => {
               />
               {!nameIsValid && nameIsTouched && (
                 <p className={classes.invalid}>Name can not be empty</p>
+              )}
+            </div>
+            <div className={classes.name}>
+              <input
+                type="email"
+                id="email"
+                ref={emailRef}
+                placeholder="Email"
+                className={`${classes.formBox} ${
+                  !emailIsValid && emailIsTouched && classes.invalidBox
+                }`}
+                onBlur={emailBlurHandler}
+                onChange={emailChangeHandler}
+                required
+              />
+              {!emailIsValid && emailIsTouched && (
+                <p className={classes.invalid}>
+                  Email can not be empty and must include "@"
+                </p>
               )}
             </div>
           </div>

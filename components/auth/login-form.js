@@ -15,6 +15,7 @@ const LoginForm = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
   const checkout = useSelector((state) => state.checkout);
+
   const [emailIsValid, setEmailIsValid] = useState(false);
   const [emailIsTouched, setEmailIsTouched] = useState(false);
   const [passwordIsValid, setPasswordIsValid] = useState(false);
@@ -36,12 +37,6 @@ const LoginForm = () => {
   }
 
   if (status === "authenticated") {
-    if (checkout) {
-      router.replace("/checkout");
-    } else {
-      router.replace("/");
-    }
-
     return (
       <div className={classes.spinnerContainer}>
         <Image
@@ -141,6 +136,11 @@ const LoginForm = () => {
       email: enteredEmail,
       password: enteredPassword,
     });
+    if (checkout) {
+      router.replace("/checkout");
+    } else {
+      router.replace("/");
+    }
 
     if (!result.ok) {
       setAuthenticate(false);

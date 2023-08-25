@@ -84,6 +84,9 @@ const orderSlice = createSlice({
     setCheckout(state) {
       state.checkout = true;
     },
+    unsetCheckout(state) {
+      state.checkout = false;
+    },
   },
 });
 

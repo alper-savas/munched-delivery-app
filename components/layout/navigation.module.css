@@ -200,3 +200,9 @@
 .removeMargin {
   margin-left: 0 !important;
 }
+
+.signupHeader {
+  margin: 0 !important;
+  font-weight: 500;
+  font-size: 1.7rem;
+}

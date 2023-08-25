@@ -417,3 +417,46 @@ export const restaurantItems = [
     ],
   },
 ];
+
+export const mainJSON = [
+  {
+    id: uuid(),
+    url: "/images/zola.jpeg",
+    name: "Zola",
+    category: "Pizza",
+    rating: "82",
+    price: "€€€",
+    info: "Neapolitan wood",
+    open: "10.00 PM",
+    fee: "2.99",
+    menu: [
+      {
+        pizza: [
+          {
+            name: "Margherita",
+            price: "10.50",
+            url: "/images/margherita.jpg",
+            ingredients: ["tomato sauce", "mozarella", "basil"],
+          },
+          {
+            name: "Marinara",
+            price: "9.50",
+            url: "/images/marinara.jpeg",
+            ingredients: ["tomato sauce", "basil", "garlic"],
+          },
+        ],
+      },
+      {
+        desserts: [
+          { name: "Souffle", price: "4.50", url: "/images/souffle.jpeg" },
+        ],
+      },
+      {
+        drinks: [
+          { name: "Coca Cola", price: "3.00", url: "/images/coke.jpg" },
+          { name: "Fanta", price: "3.00", url: "/images/fanta.jpg" },
+        ],
+      },
+    ],
+  },
+];

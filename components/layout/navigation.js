@@ -12,7 +12,6 @@ const Navigation = () => {
   const router = useRouter();
   const quantity = useSelector((state) => state.totalQuantity);
   const isOpen = useSelector((state) => state.isOpen);
-  const imageUrl = useSelector((state) => state.user.photo);
   const dispatch = useDispatch();
   const [animated, setAnimated] = useState(false);
   const { data: session, status } = useSession();
@@ -149,7 +148,7 @@ const Navigation = () => {
                     href="/register/signup"
                     className={`${classes.link} ${classes.signup}`}
                   >
-                    Sign up
+                    <h3 className={classes.signupHeader}>Sign up</h3>
                   </Link>
                 </button>
               </li>

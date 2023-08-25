@@ -8,7 +8,6 @@ import Link from "next/link";
 import spinner from "../../public/images/spinner-solid.svg";
 import { isNumeric } from "@/utilities/helper";
 import { signIn } from "next-auth/react";
-import { orderActions } from "@/context";
 
 const createUser = async (
   name,
@@ -296,11 +295,11 @@ const SignupForm = () => {
     // name
     if (enteredName !== undefined) {
       if (enteredName.trim().length === 0) {
-        setCityIsValid(false);
+        setNameIsValid(false);
         return;
       }
     }
-    setCityIsValid(true);
+    setNameIsValid(true);
 
     // email
     setEmailIsTouched(true);
@@ -323,7 +322,7 @@ const SignupForm = () => {
 
     // street
     if (enteredStreet !== undefined) {
-      if (enteredStreet.trim().length === 5) {
+      if (enteredStreet.trim().length === 0) {
         setStreetIsValid(false);
         return;
       }
@@ -332,8 +331,8 @@ const SignupForm = () => {
 
     // number
     if (enteredNumber !== undefined) {
-      if (enteredNumber.trim().length === 5) {
-        setPasswordIsValid(false);
+      if (enteredNumber.trim().length === 0) {
+        setNumberIsValid(false);
         return;
       }
     }
@@ -387,7 +386,6 @@ const SignupForm = () => {
         enteredPostcode: enteredPostcode,
         enteredCity: enteredCity,
       });
-      dispatch(orderActions.clearUser());
     } catch (error) {
       setAuthenticate(false);
       setResMes(error.message);
@@ -433,6 +431,7 @@ const SignupForm = () => {
               </div>
               <div className={classes.number}>
                 <input
+                  maxLength={5}
                   type="text"
                   id="number"
                   ref={numberRef}
@@ -531,7 +530,9 @@ const SignupForm = () => {
                 required
               />
               {!emailIsValid && emailIsTouched && (
-                <p className={classes.invalid}>Email must include "@"</p>
+                <p className={classes.invalid}>
+                  Email can not be empty and must include "@"
+                </p>
               )}
             </div>
             <div className={classes.password}>

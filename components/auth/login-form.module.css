@@ -10,10 +10,11 @@
 }
 
 .formBox {
-  padding: 1.6rem 14rem 1.6rem 1rem;
+  padding: 1.6rem 1rem 1.6rem 1rem;
   font-size: 2rem;
   border-radius: 10px;
   border: none;
+  width: 25vw;
 }
 
 .buttons {

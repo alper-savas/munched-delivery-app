@@ -5,13 +5,40 @@ import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import spinner from "../../public/images/spinner-solid.svg";
 import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { orderActions } from "@/context";
+import Grid from "../ui/grid";
 
 const UserProfile = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const [pageState, setPageState] = useState("info");
+  const [allUsers, setAllUsers] = useState();
+  const [user, setUser] = useState();
+  const [favorites, setFavorites] = useState();
+
+  useEffect(() => {
+    const getUsers = async () => {
+      const response = await fetch("/api/auth/get-users");
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.message || "Something went wrong");
+      }
+      setAllUsers(data);
+      if (allUsers?.users) {
+        const selected = allUsers.users.find((user) => {
+          return user.email == session.user.email;
+        });
+        dispatch(orderActions.setUser({ userObj: selected }));
+        setUser(selected);
+        setFavorites(selected.favorites);
+      }
+    };
+    if (status !== "unauthenticated") {
+      getUsers();
+    }
+  }, [allUsers]);
 
   const switchInfoHandler = () => {
     setPageState("info");
@@ -65,7 +92,7 @@ const UserProfile = () => {
         </div>
       ) : (
         <div className={classes.profileContainer}>
-          <h1 className={classes.header}>User Profile</h1>
+          <h1 className={classes.header}>Profile</h1>
           <div className={classes.profile}>
             <div className={classes.profileWithBtn}>
               <div className={classes.option}>
@@ -113,13 +140,17 @@ const UserProfile = () => {
                     <p>{user.postcode}</p>
                   </div>
                 </div>
+              ) : favorites.length > 0 ? (
+                <Grid items={favorites} name={"name"} />
               ) : (
-                <div>Favorites</div>
+                <div className={classes.gap}>
+                  <p className={classes.empty}>It's pretty empty here...</p>
+                </div>
               )}
             </div>
             <div className={classes.btnContainer}>
               <button className={classes.logout} onClick={handleLogout}>
-                Logout
+                <h3 className={classes.logoutHeader}>Logout</h3>
               </button>
             </div>
           </div>

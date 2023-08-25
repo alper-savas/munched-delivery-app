@@ -86,7 +86,9 @@ const OrderCard = () => {
                 }`}
               >
                 <button className={classes.checkout} onClick={handleClick}>
-                  Checkout ({(totalPrice + +fee).toString().slice(0, 5)}€)
+                  <h3 className={classes.checkoutHeader}>
+                    Checkout ({(totalPrice + +fee).toString().slice(0, 5)}€)
+                  </h3>
                 </button>
               </Link>
             </div>

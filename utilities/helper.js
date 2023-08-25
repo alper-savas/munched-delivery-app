@@ -19,3 +19,7 @@ export const formatPrice = (string) => {
 export const isNumeric = (value) => {
   return /^-?\d+$/.test(value);
 };
+
+export const generateRandomNumber = () => {
+  return Math.floor(Math.random() * 100000);
+};

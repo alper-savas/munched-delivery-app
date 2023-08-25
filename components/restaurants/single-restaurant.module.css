@@ -24,6 +24,10 @@
   justify-content: space-between;
 }
 
+.translateY {
+  transform: translateY(-9vh);
+}
+
 .info {
   margin-left: 0.4rem;
 }
@@ -34,8 +38,6 @@
   align-items: center;
   gap: 5rem;
   font-size: 2rem;
-  border-bottom: solid 1px #aaaaaa44;
-  padding-left: 5.2vw;
 }
 
 .rating {
@@ -67,4 +69,26 @@
 
 .blur {
   filter: blur(6px);
+}
+
+.infoBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 85vw;
+}
+
+.fav {
+  transform: translateX(4rem);
+}
+
+.favBtn {
+  border: none;
+  cursor: pointer;
+}
+
+.infoBarContainer {
+  display: flex;
+  justify-content: center;
+  border-bottom: solid 1px #aaaaaa44;
 }

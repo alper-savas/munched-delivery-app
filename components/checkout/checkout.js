@@ -1,12 +1,12 @@
 import React, { Fragment, useState, useEffect } from "react";
 import classes from "./checkout.module.css";
 import { useSelector, useDispatch } from "react-redux";
+import { useRouter } from "next/router";
 import { orderActions } from "@/context";
 import { useSession } from "next-auth/react";
 import { formatPrice } from "@/utilities/helper";
 import spinner from "../../public/images/spinner-solid.svg";
 import Image from "next/image";
-import Link from "next/link";
 
 const Checkout = () => {
   const dispatch = useDispatch();
@@ -20,6 +20,12 @@ const Checkout = () => {
     const itemPrice = item.item.price * item.quantity;
     totalPrice += itemPrice;
   });
+  const router = useRouter();
+
+  const confirmOrderHandler = () => {
+    router.replace("/status");
+  };
+  dispatch(orderActions.unsetCheckout());
 
   useEffect(() => {
     const getUsers = async () => {
@@ -36,7 +42,7 @@ const Checkout = () => {
         dispatch(orderActions.setUser({ userObj: selected }));
       }
     };
-    if (status === "authenticated" && user.length === 0) {
+    if (status === "authenticated") {
       getUsers();
     }
   }, [userData]);
@@ -111,7 +117,12 @@ const Checkout = () => {
                   </div>
                 </div>
                 <div className={classes.confirm}>
-                  <button className={classes.confirmBtn}>Confirm Order</button>
+                  <button
+                    onClick={confirmOrderHandler}
+                    className={classes.confirmBtn}
+                  >
+                    <h3 className={classes.confirmHeader}>Confirm Order</h3>
+                  </button>
                 </div>
               </div>
             </div>

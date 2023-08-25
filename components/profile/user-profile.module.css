@@ -3,7 +3,7 @@
 }
 
 .logout {
-  margin: 4rem auto 0 auto;
+  margin: 5rem auto 0 auto;
   font-size: 2rem;
   font-weight: 600;
   border: solid 1.5px #0a0c19;
@@ -68,7 +68,7 @@
 }
 
 .btn {
-  font-size: 2rem;
+  font-size: 2.2rem;
   border: none;
   font-weight: 700;
   cursor: pointer;
@@ -84,6 +84,7 @@
 
 .btnContainer {
   display: flex;
+  margin-left: 1.9vw;
 }
 
 .userInfo {
@@ -104,4 +105,22 @@
 
 .name {
   font-weight: 700;
+}
+
+.logoutHeader {
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin: 0 !important;
+}
+
+.gap {
+  height: 30vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty {
+  font-weight: 700;
+  font-size: 2.4rem;
 }
