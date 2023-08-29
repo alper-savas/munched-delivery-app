@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import Image from "next/image";
 import classes from "./card.module.css";
-import { capitalize } from "@/utilities/helper";
+import { capitalizeAll } from "@/utilities/helper";
 
 const Card = (props) => {
   const { name, url, places } = props;
@@ -19,7 +19,7 @@ const Card = (props) => {
           ></Image>
         </div>
         <p className={`${!places ? classes.name : undefined}`}>
-          {capitalize(name)}
+          {capitalizeAll(name)}
         </p>
         {places && <p className={classes.light}>{places} places</p>}
       </div>

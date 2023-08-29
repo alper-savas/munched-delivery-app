@@ -12,7 +12,7 @@ import OrderCard from "../ui/orderCard";
 import { useSelector, useDispatch } from "react-redux";
 import { orderActions } from "@/context";
 import { useSession } from "next-auth/react";
-import { capitalize } from "@/utilities/helper";
+import { capitalize, capitalizeAll } from "@/utilities/helper";
 
 const addRestaurant = async (email, rest) => {
   const response = await fetch("/api/favorites/favorites", {
@@ -82,7 +82,7 @@ const SingleRestaurant = (props) => {
           </div>
           <div className={`${classes.cover} ${isOpen && classes.translateY}`}>
             <div className={classes.front}>
-              <h1 className={classes.header}>{capitalize(rest.name)}</h1>
+              <h1 className={classes.header}>{capitalizeAll(rest.name)}</h1>
               <p className={classes.info}>{capitalize(rest.info)}</p>
             </div>
             <div className={classes.raer}>

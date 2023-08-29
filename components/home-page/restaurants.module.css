@@ -49,8 +49,8 @@
 }
 
 .chevronLeft {
-  transform: translateY(-36.5vh);
   padding: 12rem 3rem;
+  transform: translateY(-36.5vh);
   border: none;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;

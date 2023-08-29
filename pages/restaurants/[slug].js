@@ -4,7 +4,7 @@ import SingleRestaurant from "@/components/restaurants/single-restaurant";
 import { useDispatch } from "react-redux";
 import { orderActions } from "@/context";
 import Head from "next/head";
-import { capitalize } from "@/utilities/helper";
+import { capitalizeAll } from "@/utilities/helper";
 
 const SelectedRestaurant = (props) => {
   const { restaurant } = props;
@@ -14,7 +14,7 @@ const SelectedRestaurant = (props) => {
   return (
     <Fragment>
       <Head>
-        <title>Munched - {capitalize(restaurant[0].name)}</title>
+        <title>Munched - {capitalizeAll(restaurant[0].name)}</title>
       </Head>
       <SingleRestaurant restaurant={restaurant} />
     </Fragment>

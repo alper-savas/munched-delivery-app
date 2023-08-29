@@ -4,12 +4,12 @@ import Image from "next/image";
 import heroImage2 from "../../public/images/My project02.png";
 import heroImage1 from "../../public/images/My project.png";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
-import { restaurantItems } from "@/data/data";
+import { mainJSON } from "@/data/data";
 import { useRouter } from "next/router";
 
 const Hero = () => {
   const router = useRouter();
-  const restaurants = restaurantItems.map((restaurant) => {
+  const restaurants = mainJSON.map((restaurant) => {
     return { id: restaurant.id, name: restaurant.name, url: restaurant.url };
   });
 

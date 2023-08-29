@@ -2,6 +2,15 @@ export const capitalize = (string) => {
   return string.toString().charAt(0).toUpperCase() + string.toString().slice(1);
 };
 
+export const capitalizeAll = (string) => {
+  const words = string.split(" ");
+  const upperWords = words.map((w) => {
+    return capitalize(w);
+  });
+  const result = upperWords.join(" ").toString();
+  return result;
+};
+
 export const formatPrice = (string) => {
   const number = +string;
   if (number % 1 === 0) {

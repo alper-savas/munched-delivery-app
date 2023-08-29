@@ -1,11 +1,10 @@
 .card {
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
+  margin: 1rem 0;
   border-radius: 10px;
-  overflow: hidden;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.081);
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  width: 90%;
+  overflow: hidden;
+  margin-left: 1.2vw;
 }
 
 .card p {
@@ -37,9 +36,26 @@
   overflow: hidden;
   width: 300px;
   height: 200px;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .name {
   padding-top: 1.6rem;
   padding-bottom: 1.2rem;
+}
+
+@media screen and (min-width: 100rem) {
+  .card {
+    width: 75%;
+  }
+}
+
+@media screen and (min-width: 120rem) {
+  .card {
+    width: 65%;
+  }
 }
