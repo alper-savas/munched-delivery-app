@@ -3,6 +3,7 @@ import React, { Fragment } from "react";
 import Home from "@/components/home-page/home-page";
 import { getServerSession } from "next-auth/next";
 import { useSession } from "next-auth/react";
+import { authOptions } from "./api/auth/[...nextauth]";
 import { mainJSON, categoryItems } from "@/data/data";
 
 export const HomePage = (props) => {
@@ -41,7 +42,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       data: data,
-      session: await getServerSession(context.req, context.res),
+      session: await getServerSession(context.req, context.res, authOptions),
       categories: categories,
       restaurants: restaurants,
     },
