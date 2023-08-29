@@ -34,7 +34,7 @@ const OrderCard = () => {
     <Modal>
       <div className={classes.order}>
         <button className={classes.button} onClick={handleClick}>
-          <Image src={close} width={50} height={50} />
+          <Image src={close} width={50} height={50} alt="Close" />
         </button>
         {itemList.length === 0 ? (
           <h1 className={classes.empty}>It's pretty empty here...</h1>
@@ -51,12 +51,12 @@ const OrderCard = () => {
                   return (
                     <div className={classes.singleItem}>
                       <div className={classes.itemQuantity}>
-                        {item.quantity}x
+                        <p>{item.quantity}x</p>
+                        <h4 className={classes.item}>
+                          {JSON.stringify(item.item.name).replaceAll(`"`, "")}
+                        </h4>
                       </div>
-                      <h1 className={item}>
-                        {JSON.stringify(item.item.name).replaceAll(`"`, "")}
-                      </h1>
-                      <p className={classes.price}>{currPrice}€</p>
+                      <p className={classes.itemPrice}>{currPrice}€</p>
                     </div>
                   );
                 }

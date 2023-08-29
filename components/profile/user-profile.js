@@ -1,44 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import classes from "./user-profile.module.css";
 import Image from "next/image";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
-import spinner from "../../public/images/spinner-solid.svg";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { orderActions } from "@/context";
 import Grid from "../ui/grid";
+import spinner from "../../public/images/spinner-solid.svg";
 
-const UserProfile = () => {
+const UserProfile = (props) => {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const dispatch = useDispatch();
   const [pageState, setPageState] = useState("info");
-  const [allUsers, setAllUsers] = useState();
-  const [user, setUser] = useState();
-  const [favorites, setFavorites] = useState();
-
-  useEffect(() => {
-    const getUsers = async () => {
-      const response = await fetch("/api/auth/get-users");
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.message || "Something went wrong");
-      }
-      setAllUsers(data);
-      if (allUsers?.users) {
-        const selected = allUsers.users.find((user) => {
-          return user.email == session.user.email;
-        });
-        dispatch(orderActions.setUser({ userObj: selected }));
-        setUser(selected);
-        setFavorites(selected.favorites);
-      }
-    };
-    if (status !== "unauthenticated") {
-      getUsers();
-    }
-  }, [allUsers]);
+  const dispatch = useDispatch();
+  dispatch(orderActions.setUser({ userObj: props.user }));
+  const user = props.user;
+  const favorites = user?.favorites;
 
   const switchInfoHandler = () => {
     setPageState("info");
@@ -56,6 +34,7 @@ const UserProfile = () => {
           height={50}
           width={50}
           className={classes.spinner}
+          alt="Spinner"
         ></Image>
       </div>
     );
@@ -67,9 +46,10 @@ const UserProfile = () => {
       <div className={classes.spinnerContainer}>
         <Image
           src={spinner}
-          height={40}
-          width={40}
+          height={50}
+          width={50}
           className={classes.spinner}
+          alt="Spinner"
         ></Image>
       </div>
     );
@@ -88,6 +68,7 @@ const UserProfile = () => {
             height={50}
             width={50}
             className={classes.spinner}
+            alt="Spinner"
           ></Image>
         </div>
       ) : (
@@ -141,7 +122,9 @@ const UserProfile = () => {
                   </div>
                 </div>
               ) : favorites.length > 0 ? (
-                <Grid items={favorites} name={"name"} />
+                <div className={classes.favContainer}>
+                  <Grid items={favorites} name={"name"} />
+                </div>
               ) : (
                 <div className={classes.gap}>
                   <p className={classes.empty}>It's pretty empty here...</p>

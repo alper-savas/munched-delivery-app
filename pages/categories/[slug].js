@@ -1,17 +1,26 @@
-import React from "react";
-import { restaurantItems } from "@/data/data";
+import React, { Fragment } from "react";
+import { mainJSON } from "@/data/data";
 import SingleCategory from "@/components/categories/single-category";
+import Head from "next/head";
+import { capitalize } from "@/utilities/helper";
 
 const SelectedCategory = (props) => {
   const { restaurants } = props;
-  return <SingleCategory restaurants={restaurants} />;
+  return (
+    <Fragment>
+      <Head>
+        <title>Munched - {capitalize(restaurants[0].category)}</title>
+      </Head>
+      <SingleCategory restaurants={restaurants} />
+    </Fragment>
+  );
 };
 
 export function getStaticProps(context) {
   const { params } = context;
   const { slug } = params;
 
-  const restaurantList = restaurantItems.filter((i) => i.category === slug);
+  const restaurantList = mainJSON.filter((i) => i.category === slug);
 
   return {
     props: {
@@ -23,7 +32,7 @@ export function getStaticProps(context) {
 
 export function getStaticPaths() {
   return {
-    paths: restaurantItems.map((item) => ({ params: { slug: item.category } })),
+    paths: mainJSON.map((item) => ({ params: { slug: item.category } })),
     fallback: false,
   };
 }

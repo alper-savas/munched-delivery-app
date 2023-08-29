@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import Navigation from "./navigation";
 import Footer from "./footer";
 import { Provider } from "react-redux";

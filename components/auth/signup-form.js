@@ -76,7 +76,7 @@ const SignupForm = () => {
   const [resMes, setResMes] = useState("");
   const dispatch = useDispatch();
 
-  if (status === "loading") {
+  if (status === "loading" || status === "authenticated") {
     return (
       <div className={classes.spinnerContainer}>
         <Image
@@ -84,25 +84,7 @@ const SignupForm = () => {
           height={50}
           width={50}
           className={classes.spinner}
-        ></Image>
-      </div>
-    );
-  }
-
-  if (status === "authenticated") {
-    if (checkout) {
-      router.replace("/checkout");
-    } else {
-      router.replace("/");
-    }
-
-    return (
-      <div className={classes.spinnerContainer}>
-        <Image
-          src={spinner}
-          height={40}
-          width={40}
-          className={classes.spinner}
+          alt="Spinner"
         ></Image>
       </div>
     );
@@ -386,6 +368,11 @@ const SignupForm = () => {
         enteredPostcode: enteredPostcode,
         enteredCity: enteredCity,
       });
+      if (checkout) {
+        router.replace("/checkout");
+      } else {
+        router.replace("/");
+      }
     } catch (error) {
       setAuthenticate(false);
       setResMes(error.message);
@@ -565,6 +552,7 @@ const SignupForm = () => {
                 height={40}
                 width={40}
                 className={classes.spinner}
+                alt="Spinner"
               ></Image>
             </div>
           )}

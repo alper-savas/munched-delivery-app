@@ -56,6 +56,7 @@ const Checkout = () => {
             height={50}
             width={50}
             className={classes.spinner}
+            alt="Spinner"
           ></Image>
         </div>
       ) : (
@@ -77,6 +78,7 @@ const Checkout = () => {
                             src={item.item.url}
                             height={90}
                             width={135}
+                            alt={`${item.item.name} image`}
                           ></Image>
                           <div className={classes.itemAmount}>
                             <div className={classes.itemQuantity}>

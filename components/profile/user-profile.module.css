@@ -124,3 +124,8 @@
   font-weight: 700;
   font-size: 2.4rem;
 }
+
+.favContainer {
+  display: flex;
+  justify-content: center;
+}

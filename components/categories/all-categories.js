@@ -1,9 +1,8 @@
 import React from "react";
 import Grid from "../ui/grid";
-import { categoryItems } from "@/data/data";
 
-const AllCategories = () => {
-  return <Grid items={categoryItems} name={"category"} />;
+const AllCategories = (props) => {
+  return <Grid items={props.categories} name={"category"} />;
 };
 
 export default AllCategories;

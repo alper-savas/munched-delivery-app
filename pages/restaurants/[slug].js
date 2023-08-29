@@ -1,22 +1,31 @@
-import React from "react";
-import { restaurantItems } from "@/data/data";
+import React, { Fragment } from "react";
+import { mainJSON } from "@/data/data";
 import SingleRestaurant from "@/components/restaurants/single-restaurant";
 import { useDispatch } from "react-redux";
 import { orderActions } from "@/context";
+import Head from "next/head";
+import { capitalize } from "@/utilities/helper";
 
 const SelectedRestaurant = (props) => {
   const { restaurant } = props;
   const dispatch = useDispatch();
   dispatch(orderActions.clear());
 
-  return <SingleRestaurant restaurant={restaurant} />;
+  return (
+    <Fragment>
+      <Head>
+        <title>Munched - {capitalize(restaurant[0].name)}</title>
+      </Head>
+      <SingleRestaurant restaurant={restaurant} />
+    </Fragment>
+  );
 };
 
 export async function getStaticProps(context) {
   const { params } = context;
   const { slug } = params;
 
-  const restaurant = restaurantItems.filter((i) => i.name === slug);
+  const restaurant = mainJSON.filter((i) => i.name === slug);
 
   return {
     props: {
@@ -28,7 +37,7 @@ export async function getStaticProps(context) {
 
 export function getStaticPaths() {
   return {
-    paths: restaurantItems.map((item) => ({ params: { slug: item.name } })),
+    paths: mainJSON.map((item) => ({ params: { slug: item.name } })),
     fallback: false,
   };
 }

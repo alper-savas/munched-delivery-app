@@ -17,36 +17,40 @@ const Footer = () => {
       </div>
       <div className={classes.info}>
         <div className={classes.socials}>
-          <Link href="/">
+          <Link href="https://www.facebook.com/">
             <Image
               className={classes.invert}
               src={"/images/logo-facebook.svg"}
               height={30}
               width={30}
+              alt="Facebook"
             ></Image>
           </Link>
-          <Link href="/">
+          <Link href="https://www.instagram.com/">
             <Image
               className={classes.invert}
               src={"/images/logo-instagram.svg"}
               height={30}
               width={30}
+              alt="Instagram"
             ></Image>
           </Link>
-          <Link href="/">
+          <Link href="https://twitter.com/?lang=en">
             <Image
               className={classes.invert}
               src={"/images/logo-twitter.svg"}
               height={30}
               width={30}
+              alt="Twitter"
             ></Image>
           </Link>
-          <Link href="/">
+          <Link href="https://www.linkedin.com/">
             <Image
               className={classes.invert}
               src={"/images/logo-linkedin.svg"}
               height={30}
               width={30}
+              alt="Linkedin"
             ></Image>
           </Link>
         </div>

@@ -15,7 +15,7 @@ const FoodCard = (props) => {
     itemList.find((item) => item.item.name === name) !== undefined ? (
       itemList.find((item) => item.item.name === name).quantity
     ) : (
-      <Image src={add} height={30} width={30} />
+      <Image src={add} height={30} width={30} alt="Add" />
     )
   );
 
@@ -64,7 +64,7 @@ const FoodCard = (props) => {
   };
 
   const handleContentMouseEnter = () => {
-    setContent(<Image src={add} height={30} width={30} />);
+    setContent(<Image src={add} height={30} width={30} alt="Add" />);
   };
 
   const handleContentMouseLeave = () => {
@@ -72,7 +72,7 @@ const FoodCard = (props) => {
       itemList.find((item) => item.item.name === name) !== undefined ? (
         itemList.find((item) => item.item.name === name).quantity
       ) : (
-        <Image src={add} height={30} width={30} />
+        <Image src={add} height={30} width={30} alt="Add" />
       )
     );
   };
@@ -85,6 +85,7 @@ const FoodCard = (props) => {
           height={120}
           width={180}
           className={classes.image}
+          alt="Food image"
         ></Image>
       </div>
       <div className={classes.ingredientsContainer}>
@@ -100,7 +101,7 @@ const FoodCard = (props) => {
       <div className={classes.buttons}>
         <p className={classes.price}>€{price}</p>
         <button className={classes.button} onClick={handleRemoveItem}>
-          <Image src={remove} height={30} width={30} />
+          <Image src={remove} height={30} width={30} alt="Remove" />
         </button>
         <button
           className={classes.button}

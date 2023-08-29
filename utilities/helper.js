@@ -13,7 +13,7 @@ export const formatPrice = (string) => {
       return string.toString().padEnd(length, "0");
     }
   }
-  return string;
+  return string.toString().slice(0, 5);
 };
 
 export const isNumeric = (value) => {

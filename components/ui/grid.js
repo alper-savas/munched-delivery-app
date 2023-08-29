@@ -59,11 +59,20 @@ const Grid = (props) => {
         onClick={() => top()}
         className={classes.paginate}
         breakLabel="..."
-        nextLabel={<Image src={chevronForward} height={20} width={20}></Image>}
+        nextLabel={
+          <Image
+            src={chevronForward}
+            height={20}
+            width={20}
+            alt="Chevron"
+          ></Image>
+        }
         onPageChange={handlePageClick}
         pageRangeDisplayed={5}
         pageCount={pageCount}
-        previousLabel={<Image src={chevronBack} height={20} width={20}></Image>}
+        previousLabel={
+          <Image src={chevronBack} height={20} width={20} alt="Chevron"></Image>
+        }
         renderOnZeroPageCount={null}
         pageClassName={classes.passive}
         activeClassName={classes.active}

@@ -8,7 +8,7 @@ const Collaborate = () => {
       <h1 className={classes.header}>Work with Munched</h1>
       <div className={classes.grid}>
         <div className={classes.rider}>
-          <Image src="/images/rider.svg" height={200} width={300} />
+          <Image src="/images/rider.svg" height={200} width={300} alt="Rider" />
           <div className={classes.info}>
             <h1>As a rider</h1>
             <p>
@@ -21,7 +21,12 @@ const Collaborate = () => {
           </div>
         </div>
         <div className={classes.partner}>
-          <Image src="/images/partner.svg" height={200} width={300} />
+          <Image
+            src="/images/partner.svg"
+            height={200}
+            width={300}
+            alt="Partner"
+          />
           <div className={classes.info}>
             <h1>As a partner</h1>
             <p>
@@ -34,7 +39,12 @@ const Collaborate = () => {
           </div>
         </div>
         <div className={classes.colleague}>
-          <Image src="/images/colleague.svg" height={200} width={300} />
+          <Image
+            src="/images/colleague.svg"
+            height={200}
+            width={300}
+            alt="Colleague"
+          />
           <div className={classes.info}>
             <h1>As a colleague</h1>
             <p>

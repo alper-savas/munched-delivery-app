@@ -23,7 +23,7 @@ const LoginForm = () => {
   const [authenticate, setAuthenticate] = useState(true);
   const [loadingAuth, setLoadingAuth] = useState(false);
 
-  if (status === "loading") {
+  if (status === "loading" || status === "authenticated") {
     return (
       <div className={classes.spinnerContainer}>
         <Image
@@ -31,19 +31,7 @@ const LoginForm = () => {
           height={50}
           width={50}
           className={classes.spinner}
-        ></Image>
-      </div>
-    );
-  }
-
-  if (status === "authenticated") {
-    return (
-      <div className={classes.spinnerContainer}>
-        <Image
-          src={spinner}
-          height={40}
-          width={40}
-          className={classes.spinner}
+          alt="Spinner"
         ></Image>
       </div>
     );
@@ -197,6 +185,7 @@ const LoginForm = () => {
                 height={40}
                 width={40}
                 className={classes.spinner}
+                alt="Spinner"
               ></Image>
             </div>
           )}

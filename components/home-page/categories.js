@@ -5,7 +5,6 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Card from "../ui/card";
 import { responsive } from "../../data/data";
-import { restaurantItems, categoryItems } from "../../data/data";
 import Image from "next/image";
 import ChevronLeft from "../../public/images/chevron-back-sharp.svg";
 import ChevronRight from "../../public/images/chevron-forward-sharp.svg";
@@ -14,16 +13,16 @@ const ButtonGroup = ({ next, previous }) => {
   return (
     <div className={classes.buttonGroup}>
       <button className={classes.chevronLeft} onClick={() => previous()}>
-        <Image src={ChevronLeft} height={40} width={40}></Image>
+        <Image src={ChevronLeft} height={40} width={40} alt="Chevron"></Image>
       </button>
       <button className={classes.chevronRight} onClick={() => next()}>
-        <Image src={ChevronRight} height={40} width={40}></Image>
+        <Image src={ChevronRight} height={40} width={40} alt="Chevron"></Image>
       </button>
     </div>
   );
 };
 
-const Categories = () => {
+const Categories = (props) => {
   return (
     <Fragment>
       <div className={classes.catagories}>
@@ -41,7 +40,7 @@ const Categories = () => {
           customButtonGroup={<ButtonGroup />}
           renderButtonGroupOutside={true}
         >
-          {categoryItems.map((i) => {
+          {props.categories.map((i) => {
             return (
               <Link
                 href={`/categories/${i.category}`}

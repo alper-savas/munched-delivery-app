@@ -12,6 +12,7 @@ import OrderCard from "../ui/orderCard";
 import { useSelector, useDispatch } from "react-redux";
 import { orderActions } from "@/context";
 import { useSession } from "next-auth/react";
+import { capitalize } from "@/utilities/helper";
 
 const addRestaurant = async (email, rest) => {
   const response = await fetch("/api/favorites/favorites", {
@@ -76,15 +77,16 @@ const SingleRestaurant = (props) => {
               width={0}
               height={0}
               sizes="100vw"
+              alt="Restaurant Image"
             ></Image>
           </div>
           <div className={`${classes.cover} ${isOpen && classes.translateY}`}>
             <div className={classes.front}>
-              <h1 className={classes.header}>{rest.name}</h1>
-              <p className={classes.info}>{rest.info}</p>
+              <h1 className={classes.header}>{capitalize(rest.name)}</h1>
+              <p className={classes.info}>{capitalize(rest.info)}</p>
             </div>
             <div className={classes.raer}>
-              <p className={classes.category}>{rest.category}</p>
+              <p className={classes.category}>{capitalize(rest.category)}</p>
             </div>
           </div>
         </div>
@@ -93,13 +95,20 @@ const SingleRestaurant = (props) => {
             <div className={classes.sideInfo}>
               <div className={classes.rating}>
                 {rest.rating > 70 && (
-                  <Image src={happy} height={20} width={20} />
+                  <Image src={happy} height={20} width={20} alt="High rated" />
                 )}
-                {rest.rating < 70 && <Image src={sad} height={20} width={20} />}
+                {rest.rating < 70 && (
+                  <Image src={sad} height={20} width={20} alt="Low rated" />
+                )}
                 <p>{rest.rating}</p>
               </div>
               <div className={classes.open}>
-                <Image src={time} height={25} width={25}></Image>
+                <Image
+                  src={time}
+                  height={25}
+                  width={25}
+                  alt="Open until"
+                ></Image>
                 <p>Open until: {rest.open}</p>
               </div>
               <div className={classes.price}></div>
@@ -133,7 +142,12 @@ const SingleRestaurant = (props) => {
                 </p>
               )}
               <div className={classes.free}>
-                <Image src={bicycle} height={25} width={25}></Image>
+                <Image
+                  src={bicycle}
+                  height={25}
+                  width={25}
+                  alt="Courier"
+                ></Image>
                 <p>{rest.fee}€</p>
               </div>
             </div>
@@ -141,9 +155,19 @@ const SingleRestaurant = (props) => {
               <div className={classes.fav}>
                 <button className={classes.favBtn} onClick={addFavHandler}>
                   {restExists ? (
-                    <Image src={fav} width={30} height={30}></Image>
+                    <Image
+                      src={fav}
+                      width={30}
+                      height={30}
+                      alt="Favorite"
+                    ></Image>
                   ) : (
-                    <Image src={unfav} width={30} height={30}></Image>
+                    <Image
+                      src={unfav}
+                      width={30}
+                      height={30}
+                      alt="Unfavorite"
+                    ></Image>
                   )}
                 </button>
               </div>

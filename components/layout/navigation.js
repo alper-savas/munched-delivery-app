@@ -132,6 +132,7 @@ const Navigation = () => {
                   height={33}
                   width={33}
                   className={classes.profile}
+                  alt="Profile"
                 ></Image>
               </div>
             </Link>

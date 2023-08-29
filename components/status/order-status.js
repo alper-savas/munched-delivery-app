@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useMemo } from "react";
 import classes from "./order-status.module.css";
 import { useSelector } from "react-redux";
 import { formatPrice } from "@/utilities/helper";
@@ -16,13 +16,15 @@ const OrderStatus = () => {
     const itemPrice = item.item.price * item.quantity;
     totalPrice += itemPrice;
   });
-  const randomNumber = generateRandomNumber();
   const date = new Date();
   const day = date.getDate();
   const month = date.toLocaleString([], {
     month: "long",
   });
   const year = date.getFullYear();
+  const randomNumber = useMemo(() => {
+    return generateRandomNumber();
+  }, []);
 
   return (
     <div className={classes.container}>
@@ -32,6 +34,7 @@ const OrderStatus = () => {
           height={400}
           width={400}
           className={classes.confirmed}
+          alt="Confirmed"
         ></Image>
       </div>
       <div className={classes.status}>
@@ -42,6 +45,7 @@ const OrderStatus = () => {
             className={classes.checkmark}
             height={50}
             width={50}
+            alt="Checkmark"
           ></Image>
         </div>
         <div className={classes.orderInfo}>

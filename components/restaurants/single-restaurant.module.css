@@ -1,5 +1,5 @@
 .imageContainer {
-  height: 25rem;
+  height: 28rem;
   overflow: hidden;
 }
 
@@ -91,4 +91,8 @@
   display: flex;
   justify-content: center;
   border-bottom: solid 1px #aaaaaa44;
+}
+
+.front {
+  width: 80vw;
 }
