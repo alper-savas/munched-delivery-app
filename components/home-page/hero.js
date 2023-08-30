@@ -13,7 +13,7 @@ const Hero = () => {
   const restaurants = mainJSON.map((restaurant) => {
     return {
       id: restaurant.id,
-      name: capitalizeAll(restaurant.name),
+      name: restaurant.name,
       url: restaurant.url,
     };
   });
@@ -22,7 +22,7 @@ const Hero = () => {
     return (
       <div className={classes.searchItemDiv}>
         <Image src={item.url} height={60} width={90}></Image>
-        <p className={classes.searchItem}>{item.name}</p>
+        <p className={classes.searchItem}>{capitalizeAll(item.name)}</p>
       </div>
     );
   };
