@@ -50,7 +50,7 @@
 
 .chevronLeft {
   padding: 12rem 3rem;
-  transform: translateY(-36.5vh);
+  transform: translateY(-37.5vh);
   border: none;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
@@ -58,7 +58,7 @@
 }
 
 .chevronRight {
-  transform: translate(85vw, -36.5vh);
+  transform: translate(85vw, -37.5vh);
   padding: 12rem 3.5rem;
   border: none;
   border-top-left-radius: 20px;
@@ -70,18 +70,62 @@
   filter: none;
   background-color: #eeca3a;
   transition: all 0.3s;
-  transform: translateY(-36.5vh) scale(104%);
+  transform: translateY(-37.5vh) scale(104%);
 }
 
 .chevronRight:hover {
   filter: none;
   background-color: #eeca3a;
   transition: all 0.3s;
-  transform: translate(85vw, -36.5vh) scale(104%);
+  transform: translate(85vw, -37.5vh) scale(104%);
 }
 
 @media screen and (min-width: 90rem) {
   .carousel {
     margin-left: 9.7rem;
+  }
+}
+
+@media screen and (min-width: 100rem) {
+  .carousel {
+    margin-left: 10.5rem;
+  }
+
+  .chevronLeft {
+    transform: translateY(-33.5vh);
+  }
+
+  .chevronLeft:hover {
+    transform: translateY(-33.5vh) scale(104%);
+  }
+
+  .chevronRight {
+    transform: translate(85vw, -33.5vh);
+  }
+
+  .chevronRight:hover {
+    transform: translate(85vw, -33.5vh) scale(104%);
+  }
+}
+
+@media screen and (min-width: 105rem) {
+  .carousel {
+    margin-left: 13.5rem;
+  }
+
+  .chevronLeft {
+    transform: translateY(-29.5vh);
+  }
+
+  .chevronLeft:hover {
+    transform: translateY(-29.5vh) scale(104%);
+  }
+
+  .chevronRight {
+    transform: translate(88vw, -29.5vh);
+  }
+
+  .chevronRight:hover {
+    transform: translate(88vw, -29.5vh) scale(104%);
   }
 }
