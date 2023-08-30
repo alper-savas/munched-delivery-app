@@ -42,7 +42,7 @@ const Navigation = () => {
     <nav>
       <ul className={`${classes.navigation}`}>
         <div className={classes.smalldot}></div>
-        <div className={classes.logo}>
+        <div className="logo">
           <li>
             <Link href="/" className={classes.link}>
               MUNCHED

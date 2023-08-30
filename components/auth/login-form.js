@@ -124,12 +124,13 @@ const LoginForm = () => {
       email: enteredEmail,
       password: enteredPassword,
     });
-    if (checkout) {
-      router.replace("/checkout");
-    } else {
-      router.replace("/");
+    if (result.ok === true) {
+      if (checkout) {
+        router.replace("/checkout");
+      } else {
+        router.replace("/");
+      }
     }
-
     if (!result.ok) {
       setAuthenticate(false);
     }

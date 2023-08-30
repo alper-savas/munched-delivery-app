@@ -6,11 +6,16 @@ import heroImage1 from "../../public/images/My project.png";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { mainJSON } from "@/data/data";
 import { useRouter } from "next/router";
+import { capitalizeAll } from "@/utilities/helper";
 
 const Hero = () => {
   const router = useRouter();
   const restaurants = mainJSON.map((restaurant) => {
-    return { id: restaurant.id, name: restaurant.name, url: restaurant.url };
+    return {
+      id: restaurant.id,
+      name: capitalizeAll(restaurant.name),
+      url: restaurant.url,
+    };
   });
 
   const formatResult = (item) => {

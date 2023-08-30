@@ -11,11 +11,16 @@ import spinner from "../../public/images/spinner-solid.svg";
 
 const UserProfile = (props) => {
   const { data: session, status } = useSession();
+  const dispatch = useDispatch();
   const router = useRouter();
   const [pageState, setPageState] = useState("info");
-  const dispatch = useDispatch();
-  dispatch(orderActions.setUser({ userObj: props.user }));
-  const user = props.user;
+  let user;
+  if (session) {
+    user = props.user.users.find((user) => {
+      return user.email == session?.user.email;
+    });
+  }
+  dispatch(orderActions.setUser({ userObj: user }));
   const favorites = user?.favorites;
 
   const switchInfoHandler = () => {

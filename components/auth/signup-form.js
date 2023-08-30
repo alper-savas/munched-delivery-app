@@ -74,7 +74,6 @@ const SignupForm = () => {
   const [authenticate, setAuthenticate] = useState(true);
   const [loadingAuth, setLoadingAuth] = useState(false);
   const [resMes, setResMes] = useState("");
-  const dispatch = useDispatch();
 
   if (status === "loading" || status === "authenticated") {
     return (
@@ -368,10 +367,12 @@ const SignupForm = () => {
         enteredPostcode: enteredPostcode,
         enteredCity: enteredCity,
       });
-      if (checkout) {
-        router.replace("/checkout");
-      } else {
-        router.replace("/");
+      if (signin.ok === true) {
+        if (checkout) {
+          router.replace("/checkout");
+        } else {
+          router.replace("/");
+        }
       }
     } catch (error) {
       setAuthenticate(false);

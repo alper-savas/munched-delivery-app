@@ -6,10 +6,19 @@ import Collaborate from "./collaborate";
 import Mobile from "./mobile";
 import { useDispatch } from "react-redux";
 import { orderActions } from "@/context";
+import { useSession } from "next-auth/react";
 
 const Home = (props) => {
+  const { data: session } = useSession();
   const dispatch = useDispatch();
-  dispatch(orderActions.setUser({ userObj: props.user }));
+
+  let user;
+  if (session) {
+    user = props.user.users.find((user) => {
+      return user.email == session.user.email;
+    });
+  }
+  dispatch(orderActions.setUser({ userObj: user }));
 
   return (
     <Fragment>
