@@ -1489,7 +1489,7 @@ export const mainJSON = [
     category: "hamburger",
     rating: "78",
     price: "€€€€",
-    info: "Prepa Explore the boundaries of taste at our burger fusion lab. We blend global flavors and ingredients to create innovative, unforgettable burgers.re for an explosion of taste with our smashed-style burgers, where every bite packs a punch of flavor.",
+    info: "Prepare for an explosion of taste with our smashed-style burgers, where every bite packs a punch of flavor.",
     open: "01.00 AM",
     fee: "3.99",
     menu: [

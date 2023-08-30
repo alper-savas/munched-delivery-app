@@ -37,6 +37,7 @@ export default NextAuth({
 
         return {
           email: user.email,
+          name: user.name,
           street: user.street,
           house: user.house,
           postcode: user.postcode,

@@ -11,7 +11,7 @@ export const HomePage = (props) => {
   let user;
   if (session) {
     user = props.data.users.find((user) => {
-      return user.email == session?.user.email;
+      return user.email == session.user.email;
     });
   }
 
@@ -38,7 +38,6 @@ export async function getServerSideProps(context) {
   const data = await response.json();
   const categories = categoryItems;
   const restaurants = mainJSON;
-
   return {
     props: {
       data: data,
