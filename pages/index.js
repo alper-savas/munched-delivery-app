@@ -23,7 +23,7 @@ export const HomePage = (props) => {
 };
 
 export async function getServerSideProps() {
-  const response = await fetch("http://localhost:3000/api/auth/get-users");
+  const response = await fetch("http://127.0.0.1:3000/api/auth/get-users");
   const data = await response.json();
   const categories = categoryItems;
   const restaurants = mainJSON;
