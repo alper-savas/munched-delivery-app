@@ -1,27 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./user-profile.module.css";
 import Image from "next/image";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
+import spinner from "../../public/images/spinner-solid.svg";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { orderActions } from "@/context";
 import Grid from "../ui/grid";
-import spinner from "../../public/images/spinner-solid.svg";
 
-const UserProfile = (props) => {
+const UserProfile = () => {
   const { data: session, status } = useSession();
-  const dispatch = useDispatch();
   const router = useRouter();
   const [pageState, setPageState] = useState("info");
-  let user;
-  if (session) {
-    user = props.user.users.find((user) => {
-      return user.email == session?.user.email;
-    });
-  }
-  dispatch(orderActions.setUser({ userObj: user }));
-  const favorites = user?.favorites;
+  const [allUsers, setAllUsers] = useState();
+  const [user, setUser] = useState();
+  const [favorites, setFavorites] = useState();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const getUsers = async () => {
+      const response = await fetch("/api/auth/get-users");
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.message || "Something went wrong");
+      }
+      setAllUsers(data);
+      if (allUsers?.users) {
+        const selected = allUsers.users.find((user) => {
+          return user.email == session.user.email;
+        });
+        dispatch(orderActions.setUser({ userObj: selected }));
+        setUser(selected);
+        setFavorites(selected.favorites);
+      }
+    };
+    if (status !== "unauthenticated") {
+      getUsers();
+    }
+  }, [allUsers]);
 
   const switchInfoHandler = () => {
     setPageState("info");

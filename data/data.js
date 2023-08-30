@@ -618,7 +618,7 @@ export const mainJSON = [
     price: "€",
     info: "A Symphony of Flavors.",
     open: "01.00 AM",
-    fee: "0.00€",
+    fee: "0.00",
     menu: [
       {
         appetizers: [
