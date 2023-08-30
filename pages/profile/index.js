@@ -14,8 +14,9 @@ const index = (props) => {
 };
 
 export async function getServerSideProps() {
-  const response = await fetch("http://localhost:3000/api/auth/get-users");
-  const data = await response.json();
+  // const response = await fetch("http://localhost:3000/api/auth/get-users");
+  const response = await axios.get(`http://localhost:3000/api/auth/get-users`);
+  const data = response.data;
 
   return {
     props: {

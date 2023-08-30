@@ -2,16 +2,9 @@ import Head from "next/head";
 import React, { Fragment } from "react";
 import Home from "@/components/home-page/home-page";
 import { mainJSON, categoryItems } from "@/data/data";
-
-async function getData() {
-  const response = await fetch("http://localhost:3000/api/auth/get-users");
-  const data = await response.json();
-  return data;
-}
+import axios from "axios";
 
 export const HomePage = (props) => {
-  const data = getData();
-
   return (
     <Fragment>
       <Head>
@@ -22,7 +15,7 @@ export const HomePage = (props) => {
         />
       </Head>
       <Home
-        user={data}
+        user={props.data}
         restaurants={props.restaurants}
         categories={props.categories}
       />
@@ -31,6 +24,9 @@ export const HomePage = (props) => {
 };
 
 export async function getServerSideProps() {
+  // const response = await fetch("http://localhost:3000/api/auth/get-users");
+  const response = await axios.get(`http://localhost:3000/api/auth/get-users`);
+  const data = response.data;
   const categories = categoryItems;
   const restaurants = mainJSON;
 
