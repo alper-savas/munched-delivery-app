@@ -79,3 +79,9 @@
   transition: all 0.3s;
   transform: translate(85vw, -36.5vh) scale(104%);
 }
+
+@media screen and (min-width: 90rem) {
+  .carousel {
+    margin-left: 9.7rem;
+  }
+}
