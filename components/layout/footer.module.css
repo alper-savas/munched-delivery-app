@@ -14,7 +14,7 @@
 .icon {
   font-family: "Permanent Marker", sans-serif;
   font-size: 4rem;
-  width: 50vw;
+  width: 40vw;
   margin-left: 5vw;
   display: flex;
   margin-top: 3rem;
@@ -88,7 +88,6 @@
 .socials {
   display: flex;
   gap: 2rem;
-  transform: translateY(-2rem);
 }
 
 .invert {
@@ -98,4 +97,9 @@
 
 .others {
   padding-top: 1rem;
+}
+
+.copyright {
+  font-size: 1.6rem;
+  margin-top: 5rem;
 }

@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ### Screenshots from App
 
-<img src="./public/images/app.png" alt= “Main-Screen” width="50%" height="50%">
+<img src="./public/images/app.png" alt= “Main-Screen” width="75%" height="75%">
 
 ## Getting Started
 
@@ -57,7 +57,45 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 
 ## Folder Structure
 
-<img src="./public/images/folder.png" alt= “Main-Screen” width="10%" height="10%">
+```
+├── components
+│ ├── auth
+│ ├── categories
+│ ├── checkout
+│ ├── home-page
+│ ├── layout
+│ ├── profile
+│ ├── restaurants
+│ ├── status
+│ ├── ui
+├── context
+│ ├── index(redux)
+├── data
+├── node_modules
+├── pages
+│ ├── api
+│ ├── categories
+│ ├── checkout
+│ ├── profile
+│ ├── register
+│ ├── restaurants
+│ ├── status
+│ ├── \_app.js
+│ ├── index.html
+├── public
+│ ├── images
+├── styles
+├── utilities
+│ ├── auth.js
+│ ├── db.js
+│ ├── helper.js
+├── .env
+├── .env.local
+├── .gitignore
+├── .next.config.js
+├── package.json
+└── .README.md
+```
 
 ## Link to a Deployed Site on Vercel
 
